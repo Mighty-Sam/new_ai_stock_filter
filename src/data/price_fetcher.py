@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import logging
 import os
 import time
@@ -16,6 +17,30 @@ import yfinance as yf
 from src.data.twse_fetcher import fetch_twse_stock_history
 
 logger = logging.getLogger(__name__)
+
+# yfinance 在查無資料時會以 ERROR 印出 delisted/404，掃描全市場時會洗版
+logging.getLogger("yfinance").setLevel(logging.CRITICAL)
+
+_DEBUG_LOG = Path(__file__).resolve().parents[2] / ".cursor" / "debug-f16434.log"
+
+
+def _agent_log(hypothesis_id: str, location: str, message: str, data: dict) -> None:
+    # #region agent log
+    try:
+        payload = {
+            "sessionId": "f16434",
+            "hypothesisId": hypothesis_id,
+            "location": location,
+            "message": message,
+            "data": data,
+            "timestamp": int(time.time() * 1000),
+        }
+        _DEBUG_LOG.parent.mkdir(parents=True, exist_ok=True)
+        with _DEBUG_LOG.open("a", encoding="utf-8") as fh:
+            fh.write(json.dumps(payload, ensure_ascii=False) + "\n")
+    except OSError:
+        pass
+    # #endregion
 
 OHLCV_COLUMNS = ["open", "high", "low", "close", "volume"]
 PRICE_CACHE_DIR = Path("data/cache/prices")
@@ -80,11 +105,25 @@ def _fetch_finmind(
         response = requests.get(url, params=params, timeout=30)
         response.raise_for_status()
         payload = response.json()
-        if payload.get("status") != 200:
+        status = payload.get("status")
+        if status == 402:
+            _agent_log(
+                "H3",
+                "price_fetcher._fetch_finmind",
+                "finmind_rate_limited",
+                {"stock_code": stock_code},
+            )
+        if status != 200:
             return None
 
         rows = payload.get("data") or []
         if not rows:
+            _agent_log(
+                "H2",
+                "price_fetcher._fetch_finmind",
+                "finmind_empty",
+                {"stock_code": stock_code},
+            )
             return None
 
         df = pd.DataFrame(rows)
@@ -106,6 +145,12 @@ def _fetch_yfinance(
     start_date: date,
     end_date: date,
 ) -> Optional[pd.DataFrame]:
+    _agent_log(
+        "H1",
+        "price_fetcher._fetch_yfinance",
+        "yfinance_fallback",
+        {"stock_code": stock_code},
+    )
     for suffix in (".TW", ".TWO"):
         try:
             ticker = yf.Ticker(f"{stock_code}{suffix}")
@@ -194,6 +239,12 @@ class PriceFetcher:
             time.sleep(self.delay)
 
         if df is None or df.empty:
+            _agent_log(
+                "H2",
+                "price_fetcher.fetch",
+                "all_sources_failed",
+                {"stock_code": stock_code},
+            )
             return None
 
         cutoff = pd.Timestamp(end)
@@ -202,6 +253,12 @@ class PriceFetcher:
             if use_cache:
                 _save_price_cache(stock_code, df)
             return df
+        _agent_log(
+            "H4",
+            "price_fetcher.fetch",
+            "insufficient_rows",
+            {"stock_code": stock_code, "rows": len(df), "min_rows": min_rows},
+        )
         return None
 
     def fetch_as_of(
