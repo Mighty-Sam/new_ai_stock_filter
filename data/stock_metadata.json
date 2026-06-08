@@ -1,0 +1,10085 @@
+{
+  "updated_at": "2026-06-08T01:37:43.026215",
+  "stocks": {
+    "1225": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "6638": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "3715": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3603": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "7760": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "3021": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6690": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "3587": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "1725": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "5519": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6990": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "6559": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "3555": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3122": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1339": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "8354": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6270": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "2911": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "7427": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "5262": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3558": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6277": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1259": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "2028": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "5878": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "1780": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2235": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6667": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "2313": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5277": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "5306": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "3591": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2617": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "6108": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2496": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6504": {
+      "industry": "其他",
+      "groups": []
+    },
+    "5222": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3054": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "2330": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "5227": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6741": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "2540": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6902": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "6793": {
+      "industry": "其他",
+      "groups": []
+    },
+    "4736": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3535": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2396": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6679": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6782": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "6536": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6879": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2509": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "9943": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "7818": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "2390": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6747": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2915": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "6166": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6230": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "5533": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "4743": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1608": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "8261": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7836": {
+      "industry": "其他",
+      "groups": []
+    },
+    "9914": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "6278": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2384": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4523": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6535": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6136": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "4911": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6923": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "6026": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "3552": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "3066": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6595": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "8121": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2431": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2418": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2073": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "7880": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6702": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "8289": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "9944": {
+      "industry": "其他",
+      "groups": []
+    },
+    "8415": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "1591": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6895": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2256": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "7866": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6155": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6790": {
+      "industry": "造紙工業",
+      "groups": []
+    },
+    "6562": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6848": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8098": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "9941": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6913": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2360": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2450": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3008": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4924": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "6762": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2634": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "3023": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "8016": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2382": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2377": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1539": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "5880": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "2421": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5515": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "3362": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "8222": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2809": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "6665": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6645": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7610": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "1742": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "4175": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6841": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2332": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3290": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6921": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1729": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "8040": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6141": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6904": {
+      "industry": "其他",
+      "groups": []
+    },
+    "9907": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3324": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "6154": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "2024": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "2067": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "4532": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "4923": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2420": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2849": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "8291": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2474": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1605": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "1476": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "2063": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "4556": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6961": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6784": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "3052": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "5439": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4934": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4755": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "6873": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "6703": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3711": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6182": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3296": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3360": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "8924": {
+      "industry": "運動休閒類",
+      "groups": []
+    },
+    "8058": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "1229": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "5434": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2901": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "6691": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6461": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2924": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "4946": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "1603": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "2609": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "2641": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "2816": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "6924": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5469": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2448": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "4960": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "4413": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "6263": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "4155": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2833": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "4543": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3556": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3474": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6933": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2908": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "6684": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2454": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6257": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3666": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "9942": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6597": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6643": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "8908": {
+      "industry": "油電燃氣業",
+      "groups": []
+    },
+    "1598": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "2948": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "4541": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2438": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4438": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "1538": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3004": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "3522": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "1909": {
+      "industry": "造紙工業",
+      "groups": []
+    },
+    "6706": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3426": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6020": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "3599": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "8411": {
+      "industry": "其他",
+      "groups": []
+    },
+    "8401": {
+      "industry": "其他",
+      "groups": []
+    },
+    "5211": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "3416": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "9906": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "8085": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "2501": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "7842": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "6925": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "7912": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3321": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1730": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "1443": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2740": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "8421": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3025": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "2616": {
+      "industry": "油電燃氣業",
+      "groups": []
+    },
+    "6016": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "3032": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "9801": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "3071": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1101": {
+      "industry": "水泥工業",
+      "groups": []
+    },
+    "5284": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3576": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1727": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "6592": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3294": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7808": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2493": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8066": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "3034": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4188": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "5349": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5210": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "2731": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "2102": {
+      "industry": "橡膠工業",
+      "groups": []
+    },
+    "2401": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2356": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7870": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "2729": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "2032": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "3390": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4570": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2722": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "8931": {
+      "industry": "油電燃氣業",
+      "groups": []
+    },
+    "6004": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "8176": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "3551": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "6434": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "7789": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "2409": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2618": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "3526": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2739": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "8341": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "3633": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6831": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2597": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6697": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "2916": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "6770": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7875": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "3163": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6251": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3406": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3214": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6864": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8933": {
+      "industry": "運動休閒類",
+      "groups": []
+    },
+    "3615": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "3303": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "2596": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6861": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2206": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "6290": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4526": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3037": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8199": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "1726": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "7562": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "3617": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6134": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6901": {
+      "industry": "其他",
+      "groups": []
+    },
+    "7862": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "6839": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "8404": {
+      "industry": "其他",
+      "groups": []
+    },
+    "1337": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "5291": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8427": {
+      "industry": "其他",
+      "groups": []
+    },
+    "7753": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "8476": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "4585": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7801": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "8103": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1410": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "5601": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "6727": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6516": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6935": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "5478": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "8045": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "1441": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "6505": {
+      "industry": "油電燃氣業",
+      "groups": []
+    },
+    "9930": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "8084": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "3055": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "5388": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "3642": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "1468": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "5410": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "8210": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "4433": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "5254": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2752": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "2482": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "8438": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "6224": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6272": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8367": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "2108": {
+      "industry": "橡膠工業",
+      "groups": []
+    },
+    "6738": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "3169": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6231": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "1723": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "3306": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "3441": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2761": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "3627": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2419": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6510": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6189": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "5548": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "5356": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7705": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "2485": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3484": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7902": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2941": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "3605": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6823": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3515": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "9933": {
+      "industry": "其他",
+      "groups": []
+    },
+    "4192": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4907": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "8499": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6785": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "9960": {
+      "industry": "運動休閒類",
+      "groups": []
+    },
+    "5543": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6605": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "3543": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "5508": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6215": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6639": {
+      "industry": "油電燃氣業",
+      "groups": []
+    },
+    "2838": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "8096": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "7770": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1413": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "3044": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3466": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "2526": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "4581": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "6442": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4754": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "1313": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "7747": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "1437": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6909": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3490": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2923": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "7782": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "5906": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "2535": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "4161": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3060": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "8409": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4915": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6494": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7757": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "7815": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "8092": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "9902": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3027": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3373": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "3430": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "4966": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7879": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "7773": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6264": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "5292": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "7889": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "3048": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2704": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "3015": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6426": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2807": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "4120": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2633": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "6467": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3188": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "9802": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "6650": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "2033": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "8458": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "0050": {
+      "industry": "ETF",
+      "groups": []
+    },
+    "8429": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "4766": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "8076": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6722": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1903": {
+      "industry": "造紙工業",
+      "groups": []
+    },
+    "3580": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "2885": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "2516": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "2539": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6246": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "4584": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2316": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1569": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7764": {
+      "industry": "其他",
+      "groups": []
+    },
+    "7821": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "1446": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "3114": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3434": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6435": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6715": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5364": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "9922": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6168": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "1307": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "5523": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6867": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6261": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7798": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "4536": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "6624": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "6523": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6917": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6814": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6464": {
+      "industry": "其他",
+      "groups": []
+    },
+    "8455": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "2856": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "2733": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "2524": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "8028": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7886": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "9105": {
+      "industry": "存託憑證",
+      "groups": []
+    },
+    "8011": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6151": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "6910": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "1762": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6233": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "8147": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3473": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6677": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2115": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "4609": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "5236": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3616": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2867": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "3541": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "9937": {
+      "industry": "油電燃氣業",
+      "groups": []
+    },
+    "6835": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7556": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2762": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "5484": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2471": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1716": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6276": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2882": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "6216": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2727": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "5102": {
+      "industry": "橡膠工業",
+      "groups": []
+    },
+    "1582": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2374": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "5859": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "3339": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "5432": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "7846": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "2427": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2466": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "5016": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "6488": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3356": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "8481": {
+      "industry": "其他",
+      "groups": []
+    },
+    "7713": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6947": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "3135": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6517": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6854": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "8935": {
+      "industry": "其他",
+      "groups": []
+    },
+    "8345": {
+      "industry": "農業科技",
+      "groups": []
+    },
+    "6210": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6414": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7791": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "1708": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "6238": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "6666": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4419": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6534": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2515": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "5351": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1752": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4951": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6988": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "3305": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "8047": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "4550": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6865": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "3702": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "2520": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "2712": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "8497": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6767": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1419": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "2066": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2362": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7867": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "6751": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "3665": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "4402": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "6533": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1305": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "4544": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "8227": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6832": {
+      "industry": "其他",
+      "groups": []
+    },
+    "9917": {
+      "industry": "其他",
+      "groups": []
+    },
+    "7814": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2831": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "6164": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "5516": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "3588": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2449": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2363": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4127": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7865": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "2615": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "1472": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6614": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "5471": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4578": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1558": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6286": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "8487": {
+      "industry": "創新板股票",
+      "groups": []
+    },
+    "6733": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6124": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6214": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7858": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "5201": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "3481": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1528": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6207": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3479": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7841": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "8119": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1616": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "6748": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3191": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7822": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2204": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "1563": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "2365": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6720": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6457": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "8473": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "6103": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "8422": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "7742": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "2017": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "2393": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7829": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6158": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4430": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6987": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "6615": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6111": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "3080": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2845": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "0053": {
+      "industry": "ETF",
+      "groups": []
+    },
+    "2461": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "8070": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "2013": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "1609": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "2247": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "4949": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "3585": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3231": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2381": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2732": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "5007": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "2836": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "1736": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "4807": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "5264": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7740": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "5258": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6171": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "1316": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "2852": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "6255": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4995": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "1312": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "1452": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "3579": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3717": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "2029": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "2432": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6806": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "1702": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "7850": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2890": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "6506": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "3622": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7765": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "3088": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6121": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "3632": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6729": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "5314": {
+      "industry": "其他",
+      "groups": []
+    },
+    "7820": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "4137": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4306": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "2505": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "2938": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "4716": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "8201": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3271": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2364": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "4559": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "6890": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "6911": {
+      "industry": "其他",
+      "groups": []
+    },
+    "5301": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "2239": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "1806": {
+      "industry": "玻璃陶瓷",
+      "groups": []
+    },
+    "2352": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "9925": {
+      "industry": "其他",
+      "groups": []
+    },
+    "1615": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "3043": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3013": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2847": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "5490": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2452": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3056": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "3042": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4174": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3536": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "5907": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "2527": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "2489": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3128": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2743": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6138": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "8067": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "6629": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "1568": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "6652": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3010": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "3548": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1109": {
+      "industry": "水泥工業",
+      "groups": []
+    },
+    "7767": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "3051": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6431": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6122": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "4157": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6794": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3024": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "1513": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "7763": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "3540": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6015": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "6704": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1902": {
+      "industry": "造紙工業",
+      "groups": []
+    },
+    "2255": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "3265": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1235": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "4168": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2480": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6265": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "9912": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6599": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "9918": {
+      "industry": "油電燃氣業",
+      "groups": []
+    },
+    "1519": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6283": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1594": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "8444": {
+      "industry": "其他",
+      "groups": []
+    },
+    "9905": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6583": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "2940": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "2237": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "4183": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3028": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "4945": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3158": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "4576": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1714": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "1463": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "2453": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2906": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "8916": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3624": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3444": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "1717": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "4747": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8240": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "5272": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1704": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "3528": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "4916": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "5522": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6792": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7847": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "2603": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "6415": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1416": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6130": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3089": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6876": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4502": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "8934": {
+      "industry": "其他",
+      "groups": []
+    },
+    "4533": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6855": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "2230": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "6753": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "2451": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7402": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2702": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "5514": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "8109": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2101": {
+      "industry": "橡膠工業",
+      "groups": []
+    },
+    "3450": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1218": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "6153": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1258": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "6179": {
+      "industry": "其他",
+      "groups": []
+    },
+    "4141": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "1308": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "1503": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6725": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "6456": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "5534": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "7825": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "6185": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8906": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2314": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7703": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "9945": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2854": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "3058": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7762": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6281": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "4931": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "0051": {
+      "industry": "ETF",
+      "groups": []
+    },
+    "1907": {
+      "industry": "造紙工業",
+      "groups": []
+    },
+    "2608": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "1340": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "4138": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2483": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7812": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "8416": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6951": {
+      "industry": "創新板股票",
+      "groups": []
+    },
+    "3016": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7915": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "4442": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "7922": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "7824": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3564": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "8046": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4726": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "5426": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "8938": {
+      "industry": "運動休閒類",
+      "groups": []
+    },
+    "7732": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "1301": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "3661": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6190": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "1475": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "6115": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4414": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "2456": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2741": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "2530": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "9921": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "6668": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7810": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "5228": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6929": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8298": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "3523": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6403": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6757": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "3561": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "3313": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "4133": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8171": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "2463": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6194": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4431": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6197": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7729": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3053": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "7718": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "7783": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "6709": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8941": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "3064": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "3594": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1537": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1234": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "4749": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "8410": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "3447": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "1323": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "4148": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2379": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6649": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8390": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "2248": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "3684": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6285": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1781": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2323": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1203": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "5205": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "7794": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "3268": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6023": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "8027": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "4968": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3607": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6586": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "5225": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1587": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "8213": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6186": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "8433": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "2904": {
+      "industry": "其他",
+      "groups": []
+    },
+    "1735": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "6994": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "5013": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "6035": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "1773": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "2886": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "3092": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4554": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "7702": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "1718": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "3354": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3467": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1338": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "6969": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "3501": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6223": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "5465": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "8182": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6906": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "7860": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6196": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6878": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "6109": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "7819": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "8155": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3217": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6541": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2478": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3164": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7797": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "5011": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "8111": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "4582": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "1256": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "4580": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6491": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3162": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6953": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2444": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6821": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6593": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "4163": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6291": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2884": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "3357": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6846": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "3141": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "5864": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "8034": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6147": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7709": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3284": {
+      "industry": "其他",
+      "groups": []
+    },
+    "5450": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6198": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6558": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4976": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "3363": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6474": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "3609": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2430": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "6443": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6622": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "1713": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "6201": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "1432": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "2834": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "1710": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "5015": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "7745": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "2447": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6819": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7689": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "1777": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3276": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8069": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "3623": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6462": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7768": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6735": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "2072": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "8406": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2357": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "3557": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "6721": {
+      "industry": "其他",
+      "groups": []
+    },
+    "5520": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "4590": {
+      "industry": "創新板股票",
+      "groups": []
+    },
+    "2888": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "6584": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6780": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "4172": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2311": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6492": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8450": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "8131": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6208": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7561": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2442": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "4207": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "5904": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "6131": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "3498": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "5248": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "1455": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "2534": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "2468": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6477": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7788": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7781": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "2433": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3380": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2481": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "5328": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2514": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6884": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "3511": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3014": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7843": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6578": {
+      "industry": "農業科技業",
+      "groups": []
+    },
+    "2399": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4116": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8021": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4994": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "7743": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "3437": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6621": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1454": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "2543": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "4725": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "6705": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "4568": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "7918": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7711": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4905": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6229": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7507": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "2252": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "5438": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "8383": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1623": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "8064": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6288": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "2008": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "6485": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2486": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1507": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "7911": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "2928": {
+      "industry": "觀光事業",
+      "groups": []
+    },
+    "7898": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2494": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "2035": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "3685": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "8277": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3057": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2484": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5340": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7909": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6144": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "1219": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "8088": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4169": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "1480": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "9928": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2855": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "6872": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4908": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "2851": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "0060": {
+      "industry": "ETF",
+      "groups": []
+    },
+    "2880": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "4952": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7748": {
+      "industry": "其他",
+      "groups": []
+    },
+    "4702": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "5481": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2939": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "1264": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "4128": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1418": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "3628": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "3402": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "1240": {
+      "industry": "農業科技業",
+      "groups": []
+    },
+    "2459": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "7892": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1720": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1341": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "6952": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6209": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "4205": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "6188": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6968": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "3611": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7756": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6245": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6604": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1805": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "2547": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "4991": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3005": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1585": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "9935": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "3419": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4545": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6555": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6552": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3061": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "1784": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3527": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3007": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3705": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6218": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6126": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1601": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "6730": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1466": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "1260": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "4999": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3491": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "5903": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "7803": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1613": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "9104": {
+      "industry": "存託憑證",
+      "groups": []
+    },
+    "1464": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "2395": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "5259": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "8077": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "7857": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "6242": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3310": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1595": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4575": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6820": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "5706": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "1213": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "3317": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6758": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2250": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "2511": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "9157": {
+      "industry": "存託憑證",
+      "groups": []
+    },
+    "5604": {
+      "industry": "其他",
+      "groups": []
+    },
+    "8443": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "7738": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "4132": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4107": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4154": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6826": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "8114": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "8477": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "5288": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6005": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "4804": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "3346": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "2359": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4119": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6173": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8107": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "5353": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "7734": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2601": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "1470": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "8467": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "7813": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "5703": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "7784": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1732": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "6203": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8163": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7776": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1722": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "8342": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2358": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3287": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "4967": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4980": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4150": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4714": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "7792": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "9946": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6145": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "2434": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4510": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6875": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6112": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6891": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2342": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1227": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "1304": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "3646": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3085": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "2254": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "7877": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "2347": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "0052": {
+      "industry": "ETF",
+      "groups": []
+    },
+    "4303": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "2607": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "2328": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1796": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "1201": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "6838": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3045": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7823": {
+      "industry": "創新板股票",
+      "groups": []
+    },
+    "3150": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2387": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "8932": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "3687": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "8089": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "7419": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5403": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6530": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "2912": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "4724": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4803": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "5246": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "8403": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7590": {
+      "industry": "其他",
+      "groups": []
+    },
+    "9910": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "1560": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1789": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2437": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1409": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "8489": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6499": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8078": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6756": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6931": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4768": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "8437": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2736": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6217": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1217": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "4538": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2926": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "7751": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2344": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3630": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "4542": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6219": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6515": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3508": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "6027": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "8234": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2443": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2723": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "2065": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "1326": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "4765": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "2354": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6965": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "1535": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2462": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7837": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3017": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2327": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6585": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3020": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "6222": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "8083": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6934": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "5287": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "2369": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6576": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8923": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "2492": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8423": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "5392": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "4553": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3714": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6825": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1783": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "1533": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "9188": {
+      "industry": "存託憑證",
+      "groups": []
+    },
+    "8086": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1590": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2249": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1520": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6840": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "1309": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "2338": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1477": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "2397": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "8928": {
+      "industry": "運動休閒類",
+      "groups": []
+    },
+    "2312": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3545": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3138": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6811": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "4564": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3710": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2542": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "8424": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "7704": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4304": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "5493": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "2012": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "6892": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2537": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "3184": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8042": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2025": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "4111": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4735": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3002": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "3105": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4773": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "6289": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "1809": {
+      "industry": "玻璃陶瓷",
+      "groups": []
+    },
+    "6719": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "5704": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6294": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "1731": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "4506": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "5321": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "1565": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4162": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3289": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "5243": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2061": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "5324": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "1102": {
+      "industry": "水泥工業",
+      "groups": []
+    },
+    "1592": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "1516": {
+      "industry": "其他",
+      "groups": []
+    },
+    "8183": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "3703": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6797": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2429": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6732": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6470": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6411": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6894": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "6670": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "1294": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "1107": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2027": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "2301": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "3537": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6167": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "1760": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8105": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "9958": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "2473": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2007": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "6886": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "6574": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "9955": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "3708": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "7853": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6842": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6972": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "2701": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "9102": {
+      "industry": "存託憑證",
+      "groups": []
+    },
+    "2897": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "1220": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "3323": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "4953": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "4439": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "1435": {
+      "industry": "其他",
+      "groups": []
+    },
+    "4987": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "4160": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2636": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "2504": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "2726": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "4712": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "6564": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6776": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "2751": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "8463": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6119": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6995": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2321": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "9915": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2491": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2758": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "4429": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "8102": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6618": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "2719": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "2371": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "8043": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3176": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4147": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7897": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "4583": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "4738": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "4927": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2637": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "0056": {
+      "industry": "ETF",
+      "groups": []
+    },
+    "5876": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "4557": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "1514": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6648": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "6452": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "5009": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "2228": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "6156": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7861": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4440": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "4722": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "6805": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7715": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "1342": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6885": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2303": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2305": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3218": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6419": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "1802": {
+      "industry": "玻璃陶瓷",
+      "groups": []
+    },
+    "6856": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "6594": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7728": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "1414": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "1474": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "6750": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "7555": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3454": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6225": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2423": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2331": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2614": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3149": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3669": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2707": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "4108": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4173": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6202": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "8068": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "5425": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1467": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "2241": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "3293": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "6451": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4737": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2308": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7547": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "3130": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "3672": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6539": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4546": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "7558": {
+      "industry": "其他",
+      "groups": []
+    },
+    "1589": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2881": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "6287": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4772": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "6024": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "6641": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "7869": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2640": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "6598": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "5289": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6160": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6899": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "3046": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6937": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4115": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3059": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "8072": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "3095": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "5269": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "5457": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5512": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "7780": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "1324": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "1110": {
+      "industry": "水泥工業",
+      "groups": []
+    },
+    "7722": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "2642": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "8091": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4534": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "8080": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6409": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6538": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7882": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6626": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "2006": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "3207": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3413": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "8101": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6944": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "6696": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6967": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8071": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2488": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3312": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "4549": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6120": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2411": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "6483": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2211": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "5281": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "7826": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "5383": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "2109": {
+      "industry": "橡膠工業",
+      "groups": []
+    },
+    "8032": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "1325": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "4529": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2705": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6754": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "2755": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "4956": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3489": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "2610": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "4771": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6150": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "4513": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2315": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2349": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3512": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6187": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4186": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6236": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "2528": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "4906": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7881": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6922": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1469": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "5305": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3577": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6689": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "6870": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "7583": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "1817": {
+      "industry": "玻璃陶瓷",
+      "groups": []
+    },
+    "6412": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4417": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "2506": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "3367": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "6274": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3653": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8279": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6813": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1540": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "4166": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6118": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "5014": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "4942": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3443": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6699": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2643": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "8059": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "7779": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "7642": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6818": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6514": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "2231": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "4565": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6672": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5460": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6680": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6926": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4527": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2010": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "2436": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7790": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "5536": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "5538": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "6669": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "3673": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6973": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6548": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "5285": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6798": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "8093": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6129": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6737": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1444": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "8431": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "6142": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "5386": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "4972": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "4113": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "4171": {
+      "industry": "農業科技業",
+      "groups": []
+    },
+    "3090": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4767": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "5381": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6161": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1524": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "4106": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3093": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "5283": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "3679": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2545": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "1459": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "4989": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1904": {
+      "industry": "造紙工業",
+      "groups": []
+    },
+    "7749": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1215": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "2388": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6683": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "5443": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6569": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4441": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "3009": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7716": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "1230": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "3698": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "8087": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "8099": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "1439": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "8420": {
+      "industry": "運動休閒類",
+      "groups": []
+    },
+    "6163": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "8249": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7888": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2022": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "3374": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6271": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2337": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2038": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "7887": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6603": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1715": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "3592": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4530": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "7839": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "7754": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3598": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2455": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6971": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "2945": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "1103": {
+      "industry": "水泥工業",
+      "groups": []
+    },
+    "7769": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2105": {
+      "industry": "橡膠工業",
+      "groups": []
+    },
+    "3131": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "5525": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "1104": {
+      "industry": "水泥工業",
+      "groups": []
+    },
+    "6269": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8435": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6863": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6192": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1445": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "6830": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3022": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6958": {
+      "industry": "其他",
+      "groups": []
+    },
+    "7833": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "2380": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6531": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2069": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "3629": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "6432": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6199": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2245": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1593": {
+      "industry": "運動休閒類",
+      "groups": []
+    },
+    "2439": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6655": {
+      "industry": "其他",
+      "groups": []
+    },
+    "9103": {
+      "industry": "存託憑證",
+      "groups": []
+    },
+    "4961": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4958": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1536": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "2748": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6986": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6143": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "5483": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3083": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "6580": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6423": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1262": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2302": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "8349": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "2464": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4104": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2329": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4305": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "1440": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "9957": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "4121": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2385": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5398": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6148": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "3595": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "3704": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "8996": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "4426": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "7551": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "2458": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7725": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3521": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6213": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3029": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2325": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4416": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "7849": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "8926": {
+      "industry": "油電燃氣業",
+      "groups": []
+    },
+    "3697": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2002": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "6526": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3652": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7806": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "1614": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "6247": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "4763": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "5304": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1905": {
+      "industry": "造紙工業",
+      "groups": []
+    },
+    "6918": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2070": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6101": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "4728": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4144": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "2009": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "5302": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3036": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "7832": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6698": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "6139": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "6882": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "2820": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "3234": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "4707": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "3086": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "5220": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6543": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6739": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "7717": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "1216": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "6123": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "7895": {
+      "industry": "農業科技",
+      "groups": []
+    },
+    "6170": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "5863": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "7873": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6028": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "8359": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "2236": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "3663": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "6843": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "8462": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "6259": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6671": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "2350": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "6550": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "4117": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3078": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5297": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "9151": {
+      "industry": "存託憑證",
+      "groups": []
+    },
+    "5203": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "4552": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "7578": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3118": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4142": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3518": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2903": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "6172": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7920": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2495": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7805": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "4139": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2340": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4130": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3529": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2475": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "7752": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "6940": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6869": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "2062": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "3050": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3675": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2942": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "8272": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "3712": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3229": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4560": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "7827": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6789": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "5347": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2613": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "5280": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6244": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "8358": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7443": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6165": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "6620": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3236": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5344": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7595": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1532": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "5468": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3325": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "4979": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6128": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7851": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6812": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "7575": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2426": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7795": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "5608": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "3707": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7856": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "5603": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "6920": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "8999": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3026": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3570": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "2605": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "6125": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "8033": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6849": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "1737": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "0057": {
+      "industry": "ETF",
+      "groups": []
+    },
+    "3520": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6563": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3689": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6728": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "6939": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7566": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "5267": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6570": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6527": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7719": {
+      "industry": "其他",
+      "groups": []
+    },
+    "1233": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "3485": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6581": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "5245": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "7785": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "1583": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1527": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6174": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1785": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "3011": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5278": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "7708": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "7771": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6858": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6787": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "5854": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "6963": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "6752": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6692": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "7724": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1336": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6609": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2351": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6716": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "5529": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "4939": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1711": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "6404": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "5489": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "6449": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6661": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7707": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1580": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "8050": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "4919": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6577": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "3073": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "3308": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6712": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1417": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "4528": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "8917": {
+      "industry": "油電燃氣業",
+      "groups": []
+    },
+    "6235": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "8905": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6844": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1815": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4114": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1442": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "7750": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1343": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "3063": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "5209": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6417": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "2630": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "3040": {
+      "industry": "其他",
+      "groups": []
+    },
+    "4551": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "3659": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "3519": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2457": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2850": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "6561": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "7863": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "6946": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "2936": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "4537": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "5531": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6140": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "1599": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3152": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "8374": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6625": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6525": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6874": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6977": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "3288": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4770": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "6755": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3465": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "9951": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6116": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "3596": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3534": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2812": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "4974": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1434": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "1303": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "6781": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2469": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3067": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "7848": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "6796": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6560": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6127": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4555": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "5309": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2227": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "7828": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "9927": {
+      "industry": "其他",
+      "groups": []
+    },
+    "4935": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3264": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6117": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4925": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2403": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1701": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "2049": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2546": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "8329": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "2104": {
+      "industry": "橡膠工業",
+      "groups": []
+    },
+    "6206": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2336": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3144": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2538": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "1612": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "1604": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "8930": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "2892": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "5271": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2734": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "7799": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1522": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "6791": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6816": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "1311": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "3514": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2375": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2498": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "5820": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "2497": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "4589": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1453": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "3584": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6512": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "6999": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6868": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "3097": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "9110": {
+      "industry": "存託憑證",
+      "groups": []
+    },
+    "6810": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6509": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "3713": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "1721": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "8162": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3686": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1471": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6405": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2417": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "3701": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2465": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7736": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "3030": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7726": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7759": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1293": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "7834": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "5315": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6284": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2841": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "4563": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "5276": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2373": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7899": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6212": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "2103": {
+      "industry": "橡膠工業",
+      "groups": []
+    },
+    "3492": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2905": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "2646": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "3081": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "3499": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6234": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "4944": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "9101": {
+      "industry": "存託憑證",
+      "groups": []
+    },
+    "7890": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "2258": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "1210": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "3483": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2064": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "3031": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "4904": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4164": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6673": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "1504": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6542": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "4572": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1315": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "2031": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "6266": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6983": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "8929": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6827": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6228": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "4401": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "6637": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1314": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "8940": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "2606": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "1512": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "6473": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "2020": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "6565": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "6742": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1319": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "4706": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "2424": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "8436": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3115": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "0054": {
+      "industry": "ETF",
+      "groups": []
+    },
+    "6591": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6169": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "6590": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6205": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6859": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6226": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2753": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6883": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "6907": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2023": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "6279": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3645": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "9939": {
+      "industry": "其他",
+      "groups": []
+    },
+    "4711": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "4984": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "3142": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "8038": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5234": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2353": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1465": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "3631": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6418": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5213": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "3533": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3047": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6771": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "8936": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6945": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3260": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3680": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2536": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "1712": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "5530": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2059": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6881": {
+      "industry": "其他",
+      "groups": []
+    },
+    "1515": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3205": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2348": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2412": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7777": {
+      "industry": "其他",
+      "groups": []
+    },
+    "8927": {
+      "industry": "油電燃氣業",
+      "groups": []
+    },
+    "4938": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "8008": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4950": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "3709": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6114": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3232": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "5233": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "6808": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6175": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5215": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2832": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "8442": {
+      "industry": "其他",
+      "groups": []
+    },
+    "7530": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3018": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6497": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6184": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6438": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "9929": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2383": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2408": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3716": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2823": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "2414": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "5263": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "5251": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "9938": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3259": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4573": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3168": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3338": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1799": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3546": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "4566": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "7919": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "5299": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2367": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2476": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2947": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "3311": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2107": {
+      "industry": "橡膠工業",
+      "groups": []
+    },
+    "4744": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2889": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "4933": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2827": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "3035": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7735": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "3438": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6428": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "4739": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "1618": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "6799": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2207": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "4131": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1436": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "1271": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7876": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3285": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "7772": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "0058": {
+      "industry": "ETF",
+      "groups": []
+    },
+    "3664": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "5607": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "3532": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6707": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "7584": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "5371": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2404": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2341": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6472": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "3041": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6227": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "8081": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4806": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "3455": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6573": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "8041": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1611": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "5498": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6938": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6775": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2472": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6708": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7901": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "5345": {
+      "industry": "其他",
+      "groups": []
+    },
+    "5310": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6927": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4732": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "0081": {
+      "industry": "ETF",
+      "groups": []
+    },
+    "5905": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "4195": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6441": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "3019": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2929": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "5464": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6596": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "7669": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "5240": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "4903": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6734": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6617": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2913": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "2801": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "8480": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3227": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2883": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "3211": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6589": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "8104": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2891": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "7907": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "4152": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7811": {
+      "industry": "運動休閒類",
+      "groups": []
+    },
+    "7455": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "4733": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "1776": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "6898": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "3224": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "1795": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8482": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "8112": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1268": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "1231": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "4558": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1457": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "4909": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "4198": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6496": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6243": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4562": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6422": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5521": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "3049": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "9934": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "4170": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2724": {
+      "industry": "其他",
+      "groups": []
+    },
+    "8937": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2467": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6674": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6275": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6191": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6743": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4102": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6248": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "0059": {
+      "industry": "ETF",
+      "groups": []
+    },
+    "5455": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6493": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3006": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1456": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "7913": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6021": {
+      "industry": "金融業",
+      "groups": []
+    },
+    "4943": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1447": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "3219": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "6642": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6280": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4588": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "8054": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3189": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4571": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "4503": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1733": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6579": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6634": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2221": {
+      "industry": "其他",
+      "groups": []
+    },
+    "4587": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2612": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "3094": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6654": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "2441": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7921": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "2071": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "2361": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "9931": {
+      "industry": "油電燃氣業",
+      "groups": []
+    },
+    "3504": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "5609": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "3379": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3494": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6532": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4973": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3530": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2745": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "1529": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6768": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "8048": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6651": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "7712": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "5474": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7891": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2376": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6817": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6916": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3581": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "5902": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "3593": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4569": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "1517": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6498": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2015": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "6469": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1521": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "2233": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "6997": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "0080": {
+      "industry": "ETF",
+      "groups": []
+    },
+    "6220": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6640": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3322": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8255": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3372": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3516": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2460": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2760": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6744": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2415": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8299": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "8921": {
+      "industry": "其他",
+      "groups": []
+    },
+    "7893": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6658": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1541": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3315": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "2425": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7714": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "1606": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "7730": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6984": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "7885": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "3563": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6568": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "9136": {
+      "industry": "存託憑證",
+      "groups": []
+    },
+    "6241": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6465": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "8432": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8024": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6588": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "1232": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "6486": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "3567": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "3178": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6914": {
+      "industry": "其他",
+      "groups": []
+    },
+    "7710": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6763": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "8097": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "4729": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2718": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "2402": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4420": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "6915": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1321": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "5355": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6912": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "3550": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8049": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "8074": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6804": {
+      "industry": "運動休閒類",
+      "groups": []
+    },
+    "1586": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "7904": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "6877": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "6282": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "9950": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "3694": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3388": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6908": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "2477": {
+      "industry": "其他電子業",
+      "groups": []
+    },
+    "8039": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6932": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "5312": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6807": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "4721": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "5475": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7721": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "2391": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6416": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "0061": {
+      "industry": "ETF",
+      "groups": []
+    },
+    "4178": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3209": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "2208": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "1570": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "8454": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "5488": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3167": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "1108": {
+      "industry": "水泥工業",
+      "groups": []
+    },
+    "6240": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6857": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6446": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1449": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "1460": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "6221": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "4126": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6815": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8464": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "3272": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "8466": {
+      "industry": "其他",
+      "groups": []
+    },
+    "7816": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2114": {
+      "industry": "橡膠工業",
+      "groups": []
+    },
+    "9924": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "3062": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6695": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4930": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "2479": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6104": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "5206": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6292": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6239": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1506": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2243": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "6407": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "5223": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "2548": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "2910": {
+      "industry": "貿易百貨",
+      "groups": []
+    },
+    "6980": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6833": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2499": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2750": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6979": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "7868": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "4977": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1295": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "5230": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6176": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2324": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6788": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6803": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "7786": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "9919": {
+      "industry": "其他",
+      "groups": []
+    },
+    "7854": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "3252": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "8478": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "7631": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6195": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "6959": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "3625": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "1473": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "6723": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "4577": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "9962": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "1810": {
+      "industry": "玻璃陶瓷",
+      "groups": []
+    },
+    "6113": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "2706": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6204": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1423": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "4760": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "3383": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2368": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6761": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6662": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6676": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1707": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7871": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3531": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "8418": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6657": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "9904": {
+      "industry": "運動休閒",
+      "groups": []
+    },
+    "2754": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6183": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6549": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3583": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "7744": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2446": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1597": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3638": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6012": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "6556": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "7872": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6606": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3221": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6582": {
+      "industry": "橡膠工業",
+      "groups": []
+    },
+    "3202": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3614": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4153": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4971": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6903": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "6834": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4197": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7706": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6887": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "1525": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "4432": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "3332": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1438": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "2428": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1709": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "9949": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "6659": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3693": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "6764": {
+      "industry": "其他",
+      "groups": []
+    },
+    "6180": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "6957": {
+      "industry": "其他",
+      "groups": []
+    },
+    "4561": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2034": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "7896": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3266": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "8440": {
+      "industry": "綠能環保類",
+      "groups": []
+    },
+    "8942": {
+      "industry": "其他",
+      "groups": []
+    },
+    "3226": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "3228": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6177": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "3349": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "9911": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "6546": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "5202": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6976": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1310": {
+      "industry": "塑膠工業",
+      "groups": []
+    },
+    "3147": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "7516": {
+      "industry": "其他",
+      "groups": []
+    },
+    "2405": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "8110": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6495": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "2611": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "8284": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "1906": {
+      "industry": "造紙工業",
+      "groups": []
+    },
+    "3230": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "2201": {
+      "industry": "汽車工業",
+      "groups": []
+    },
+    "2345": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6482": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "3257": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6610": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7855": {
+      "industry": "其他",
+      "groups": []
+    },
+    "5452": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "8446": {
+      "industry": "文化創意業",
+      "groups": []
+    },
+    "3573": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4746": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6664": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8044": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "2887": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "9926": {
+      "industry": "油電燃氣業",
+      "groups": []
+    },
+    "2413": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3171": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "7723": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6425": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2440": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "2406": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2106": {
+      "industry": "橡膠工業",
+      "groups": []
+    },
+    "6693": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1813": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2392": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "7731": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "4540": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "4129": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7878": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1626": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "3706": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "7737": {
+      "industry": "數位雲端",
+      "groups": []
+    },
+    "4535": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2937": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "6949": {
+      "industry": "創新板股票",
+      "groups": []
+    },
+    "5701": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6786": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "4167": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6612": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6616": {
+      "industry": "居家生活類",
+      "groups": []
+    },
+    "2837": {
+      "industry": "金融保險",
+      "groups": []
+    },
+    "3678": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "3033": {
+      "industry": "電子通路業",
+      "groups": []
+    },
+    "5487": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6572": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3117": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1724": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "6518": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "5348": {
+      "industry": "運動休閒類",
+      "groups": []
+    },
+    "9940": {
+      "industry": "其他",
+      "groups": []
+    },
+    "7883": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "6682": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "4190": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1808": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "2949": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "7758": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "1617": {
+      "industry": "電器電纜",
+      "groups": []
+    },
+    "3213": {
+      "industry": "電腦及週邊設備業",
+      "groups": []
+    },
+    "8271": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "3003": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6850": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7607": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3559": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "1786": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "1236": {
+      "industry": "食品工業",
+      "groups": []
+    },
+    "3297": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "1531": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2644": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "6928": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6152": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "6962": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1788": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6133": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "6982": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "5547": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "6862": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3597": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "6936": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8215": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "1269": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "7840": {
+      "industry": "農業科技",
+      "groups": []
+    },
+    "4720": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "1584": {
+      "industry": "其他",
+      "groups": []
+    },
+    "1526": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "2756": {
+      "industry": "觀光餐旅",
+      "groups": []
+    },
+    "3376": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4123": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7796": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "8488": {
+      "industry": "其他",
+      "groups": []
+    },
+    "5871": {
+      "industry": "其他",
+      "groups": []
+    },
+    "1530": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "4741": {
+      "industry": "化學工業",
+      "groups": []
+    },
+    "5274": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "2355": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2014": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "7761": {
+      "industry": "綠能環保",
+      "groups": []
+    },
+    "8472": {
+      "industry": "數位雲端類",
+      "groups": []
+    },
+    "1523": {
+      "industry": "電機機械",
+      "groups": []
+    },
+    "6919": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "8150": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "2317": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4912": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "4764": {
+      "industry": "化學生技醫療",
+      "groups": []
+    },
+    "2030": {
+      "industry": "鋼鐵工業",
+      "groups": []
+    },
+    "6613": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "4745": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6237": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6547": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "7831": {
+      "industry": "居家生活",
+      "groups": []
+    },
+    "1451": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "1402": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "5546": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "5244": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "6847": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "4406": {
+      "industry": "紡織纖維",
+      "groups": []
+    },
+    "5511": {
+      "industry": "建材營造",
+      "groups": []
+    },
+    "9908": {
+      "industry": "油電燃氣業",
+      "groups": []
+    },
+    "3038": {
+      "industry": "電子工業",
+      "groups": []
+    },
+    "4109": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "6996": {
+      "industry": "半導體業",
+      "groups": []
+    },
+    "6508": {
+      "industry": "農業科技業",
+      "groups": []
+    },
+    "6146": {
+      "industry": "其他電子類",
+      "groups": []
+    },
+    "0055": {
+      "industry": "ETF",
+      "groups": []
+    },
+    "3206": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "3432": {
+      "industry": "電子零組件業",
+      "groups": []
+    },
+    "8426": {
+      "industry": "其他",
+      "groups": []
+    },
+    "9106": {
+      "industry": "存託憑證",
+      "groups": []
+    },
+    "1734": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "5212": {
+      "industry": "資訊服務業",
+      "groups": []
+    },
+    "6955": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3682": {
+      "industry": "通信網路業",
+      "groups": []
+    },
+    "4105": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "3691": {
+      "industry": "光電業",
+      "groups": []
+    },
+    "4194": {
+      "industry": "生技醫療業",
+      "groups": []
+    },
+    "2645": {
+      "industry": "航運業",
+      "groups": []
+    },
+    "6829": {
+      "industry": "半導體業",
+      "groups": []
+    }
+  }
+}

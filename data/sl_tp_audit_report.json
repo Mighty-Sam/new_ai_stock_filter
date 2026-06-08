@@ -1,0 +1,144 @@
+{
+  "audit": {
+    "checked": 16059,
+    "errors": [],
+    "warnings": [],
+    "stale_stocks": [],
+    "price_cache_size": 544
+  },
+  "patterns": {
+    "pattern_notes": [
+      "cross_ma 止損價高於進場價的比例：11.0%（上穿均價在進場價之上時，止損變成『獲利保護』而非傳統停損）",
+      "cross_ma 進場當日即出場：1995/6234 (32.0%)"
+    ]
+  },
+  "summary_meta": {
+    "updated_at": "2026-06-07T23:18:15.387849",
+    "stocks_scanned": 2131,
+    "stocks_with_data": 1968,
+    "signal_count": 2078,
+    "trade_count": 18702,
+    "history_years": 1,
+    "start_date": "2025-06-07",
+    "end_date": "2026-06-07",
+    "combo_stats": [
+      {
+        "stop_type": "cross_ma",
+        "tp_type": "pct_10",
+        "sample_count": 2078,
+        "win_rate": 43.4,
+        "avg_return_pct": 0.79,
+        "median_return_pct": -0.8,
+        "profit_factor": 1.31,
+        "avg_win_loss_ratio": 1.7,
+        "stop_rate": 65.3,
+        "tp_rate": 30.9,
+        "timeout_rate": 3.8
+      },
+      {
+        "stop_type": "cross_ma",
+        "tp_type": "pct_20",
+        "sample_count": 2078,
+        "win_rate": 38.2,
+        "avg_return_pct": 2.17,
+        "median_return_pct": -1.33,
+        "profit_factor": 1.77,
+        "avg_win_loss_ratio": 2.86,
+        "stop_rate": 69.2,
+        "tp_rate": 22.3,
+        "timeout_rate": 8.5
+      },
+      {
+        "stop_type": "cross_ma",
+        "tp_type": "pct_30",
+        "sample_count": 2078,
+        "win_rate": 37.1,
+        "avg_return_pct": 3.21,
+        "median_return_pct": -1.4,
+        "profit_factor": 2.12,
+        "avg_win_loss_ratio": 3.58,
+        "stop_rate": 69.8,
+        "tp_rate": 16.7,
+        "timeout_rate": 13.5
+      },
+      {
+        "stop_type": "pct_5",
+        "tp_type": "pct_10",
+        "sample_count": 2078,
+        "win_rate": 36.9,
+        "avg_return_pct": 0.36,
+        "median_return_pct": -5.0,
+        "profit_factor": 1.12,
+        "avg_win_loss_ratio": 1.91,
+        "stop_rate": 61.3,
+        "tp_rate": 33.3,
+        "timeout_rate": 5.3
+      },
+      {
+        "stop_type": "pct_5",
+        "tp_type": "pct_20",
+        "sample_count": 2078,
+        "win_rate": 29.5,
+        "avg_return_pct": 1.39,
+        "median_return_pct": -5.0,
+        "profit_factor": 1.4,
+        "avg_win_loss_ratio": 3.35,
+        "stop_rate": 68.0,
+        "tp_rate": 21.8,
+        "timeout_rate": 10.2
+      },
+      {
+        "stop_type": "pct_5",
+        "tp_type": "pct_30",
+        "sample_count": 2078,
+        "win_rate": 27.7,
+        "avg_return_pct": 2.34,
+        "median_return_pct": -5.0,
+        "profit_factor": 1.67,
+        "avg_win_loss_ratio": 4.33,
+        "stop_rate": 69.4,
+        "tp_rate": 16.4,
+        "timeout_rate": 14.2
+      },
+      {
+        "stop_type": "pct_10",
+        "tp_type": "pct_10",
+        "sample_count": 2078,
+        "win_rate": 54.1,
+        "avg_return_pct": 0.93,
+        "median_return_pct": 4.58,
+        "profit_factor": 1.23,
+        "avg_win_loss_ratio": 1.04,
+        "stop_rate": 38.0,
+        "tp_rate": 48.1,
+        "timeout_rate": 13.9
+      },
+      {
+        "stop_type": "pct_10",
+        "tp_type": "pct_20",
+        "sample_count": 2078,
+        "win_rate": 47.6,
+        "avg_return_pct": 2.94,
+        "median_return_pct": -1.0,
+        "profit_factor": 1.65,
+        "avg_win_loss_ratio": 1.8,
+        "stop_rate": 41.7,
+        "tp_rate": 33.0,
+        "timeout_rate": 25.4
+      },
+      {
+        "stop_type": "pct_10",
+        "tp_type": "pct_30",
+        "sample_count": 2078,
+        "win_rate": 46.1,
+        "avg_return_pct": 4.52,
+        "median_return_pct": -1.74,
+        "profit_factor": 1.98,
+        "avg_win_loss_ratio": 2.29,
+        "stop_rate": 42.3,
+        "tp_rate": 24.2,
+        "timeout_rate": 33.5
+      }
+    ]
+  }
+}
