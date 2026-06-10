@@ -89,8 +89,9 @@ chmod +x scripts/install_mac_schedule.sh scripts/daily_scan.sh
 
 Workflow 檔：`.github/workflows/daily_scan.yml`
 
-- **排程**：週一至週五 09:00 UTC（台灣時間 17:00）
+- **排程**：週日至週五 09:00 UTC（台灣時間 17:00；週六不跑）
 - **手動觸發**：GitHub → Actions → Daily Stock Scan → Run workflow
+- **回測累積**：每次 run 結束後以 Actions Cache 保存 `data/backtest.db`、`backtest_summary.json`、`backtest_trades.csv` 等，下次排程會還原並持續累積前瞻追蹤與歷史回測快取
 
 ### 設定 GitHub Secrets
 
@@ -106,12 +107,15 @@ Workflow 檔：`.github/workflows/daily_scan.yml`
 
 每次掃描後自動：
 
-1. **前瞻追蹤**：紀錄新信號，隔日開盤買入，持有 10 / 20 交易日後收盤賣出並結算
+1. **前瞻追蹤**：紀錄新信號，隔日開盤買入，依停損/停利規則結算
 2. **歷史回測**：近 3 年全市場信號回測（快取 24 小時）
 
-**報酬計算：**
+**報酬計算（每日排程 / Telegram 回測統計）：**
 - 買入：信號日隔日開盤價
-- 賣出：買入後第 10 / 20 個交易日收盤價
+- 停損：**-10%**（當日 low 觸及）
+- 停利：**+30%**（當日 high 觸及）
+- 到期：最多持有 **20** 交易日，未觸發則第 20 日收盤賣出
+- 同日同時觸及：保守先判停損
 - 基準：0050 同區間報酬（alpha = 個股報酬 - 0050 報酬）
 
 **輸出檔案：**

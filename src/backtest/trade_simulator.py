@@ -1,14 +1,22 @@
-"""交易模擬：隔日開盤買入、持有 N 日後收盤賣出。"""
+"""交易模擬：隔日開盤買入、停損 -10% / 停利 +30%、最多持有 20 交易日。"""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date
-from typing import List, Optional
+from typing import List, Literal, Optional
 
 import pandas as pd
 
-HOLD_PERIODS = (10, 20)
+MAX_HOLD_DAYS = 20
+STOP_LOSS_PCT = 0.10
+TAKE_PROFIT_PCT = 0.30
+STRATEGY_LABEL = "停損-10%/停利+30%（最多20日）"
+
+ExitReason = Literal["stop", "take_profit", "timeout"]
+
+# 向後相容：前瞻追蹤結算仍以此判斷最長持有
+HOLD_PERIODS = (MAX_HOLD_DAYS,)
 
 
 @dataclass
@@ -25,6 +33,7 @@ class TradeResult:
     alpha_pct: float
     is_win: bool
     beat_benchmark: bool
+    exit_reason: ExitReason = "timeout"
     valid: bool = True
 
 
@@ -55,16 +64,36 @@ def _price_on(df: pd.DataFrame, idx: int, column: str) -> Optional[float]:
     return float(val)
 
 
+def _benchmark_return(
+    benchmark_df: pd.DataFrame,
+    entry_date: date,
+    exit_date: date,
+) -> Optional[float]:
+    bench_entry_idx = _find_index(benchmark_df.index, entry_date)
+    bench_exit_idx = _find_index(benchmark_df.index, exit_date)
+    if bench_entry_idx is None or bench_exit_idx is None:
+        return None
+
+    bench_entry = _price_on(benchmark_df, bench_entry_idx, "open")
+    bench_exit = _price_on(benchmark_df, bench_exit_idx, "close")
+    if bench_entry is None or bench_exit is None:
+        return None
+
+    return (bench_exit - bench_entry) / bench_entry
+
+
 def simulate_trade(
     stock_code: str,
     stock_df: pd.DataFrame,
     benchmark_df: pd.DataFrame,
     signal_date: date,
-    hold_days: int,
+    hold_days: Optional[int] = None,
 ) -> Optional[TradeResult]:
     """
-    信號日 T → T+1 開盤買入 → 買入後第 hold_days 個交易日收盤賣出。
+    信號日 T → T+1 開盤買入 → 逐日檢查停損 -10% / 停利 +30%，最多 20 交易日。
+    同日同時觸及：保守先判停損。hold_days 參數保留向後相容，已忽略。
     """
+    del hold_days
     if stock_df is None or stock_df.empty or benchmark_df is None or benchmark_df.empty:
         return None
 
@@ -78,30 +107,52 @@ def simulate_trade(
     if entry_idx is None:
         return None
 
-    exit_idx = entry_idx + hold_days - 1
-    if exit_idx >= len(stock_df):
+    last_idx = entry_idx + MAX_HOLD_DAYS - 1
+    if last_idx >= len(stock_df):
         return None
 
     entry_price = _price_on(stock_df, entry_idx, "open")
-    exit_price = _price_on(stock_df, exit_idx, "close")
-    if entry_price is None or exit_price is None:
+    if entry_price is None:
         return None
 
+    stop_price = entry_price * (1 - STOP_LOSS_PCT)
+    tp_price = entry_price * (1 + TAKE_PROFIT_PCT)
     entry_date = _to_date(dates[entry_idx])
-    exit_date = _to_date(dates[exit_idx])
 
-    bench_entry_idx = _find_index(benchmark_df.index, entry_date)
-    bench_exit_idx = _find_index(benchmark_df.index, exit_date)
-    if bench_entry_idx is None or bench_exit_idx is None:
+    exit_idx = last_idx
+    exit_price = _price_on(stock_df, last_idx, "close")
+    exit_reason: ExitReason = "timeout"
+    actual_hold = MAX_HOLD_DAYS
+
+    if exit_price is None:
         return None
 
-    bench_entry = _price_on(benchmark_df, bench_entry_idx, "open")
-    bench_exit = _price_on(benchmark_df, bench_exit_idx, "close")
-    if bench_entry is None or bench_exit is None:
+    for day_idx in range(entry_idx, entry_idx + MAX_HOLD_DAYS):
+        low = _price_on(stock_df, day_idx, "low")
+        high = _price_on(stock_df, day_idx, "high")
+        if low is None or high is None:
+            continue
+
+        if low <= stop_price:
+            exit_idx = day_idx
+            exit_price = stop_price
+            exit_reason = "stop"
+            actual_hold = day_idx - entry_idx + 1
+            break
+
+        if high >= tp_price:
+            exit_idx = day_idx
+            exit_price = tp_price
+            exit_reason = "take_profit"
+            actual_hold = day_idx - entry_idx + 1
+            break
+
+    exit_date = _to_date(dates[exit_idx])
+    bench_return = _benchmark_return(benchmark_df, entry_date, exit_date)
+    if bench_return is None:
         return None
 
     stock_return = (exit_price - entry_price) / entry_price
-    bench_return = (bench_exit - bench_entry) / bench_entry
     alpha = stock_return - bench_return
 
     return TradeResult(
@@ -111,12 +162,13 @@ def simulate_trade(
         entry_price=round(entry_price, 4),
         exit_date=exit_date,
         exit_price=round(exit_price, 4),
-        hold_days=hold_days,
+        hold_days=actual_hold,
         return_pct=round(stock_return * 100, 2),
         benchmark_return_pct=round(bench_return * 100, 2),
         alpha_pct=round(alpha * 100, 2),
         is_win=stock_return > 0,
         beat_benchmark=alpha > 0,
+        exit_reason=exit_reason,
         valid=True,
     )
 
@@ -128,9 +180,6 @@ def simulate_trades(
     signal_date: date,
     hold_periods: tuple[int, ...] = HOLD_PERIODS,
 ) -> List[TradeResult]:
-    results: List[TradeResult] = []
-    for days in hold_periods:
-        trade = simulate_trade(stock_code, stock_df, benchmark_df, signal_date, days)
-        if trade is not None:
-            results.append(trade)
-    return results
+    del hold_periods
+    trade = simulate_trade(stock_code, stock_df, benchmark_df, signal_date)
+    return [trade] if trade is not None else []

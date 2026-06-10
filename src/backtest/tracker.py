@@ -17,7 +17,7 @@ from src.backtest.storage import (
     mark_signal_status,
     update_signal_entry,
 )
-from src.backtest.trade_simulator import HOLD_PERIODS, TradeResult, simulate_trades
+from src.backtest.trade_simulator import TradeResult, simulate_trades
 from src.data.benchmark import fetch_benchmark
 from src.data.price_fetcher import PriceFetcher
 from src.screener.conditions import ScreenResult
@@ -71,32 +71,27 @@ class ForwardTracker:
             if not trades:
                 continue
 
-            first = trades[0]
+            trade = trades[0]
             if row["entry_price"] is None:
-                update_signal_entry(signal_id, first.entry_date, first.entry_price)
+                update_signal_entry(signal_id, trade.entry_date, trade.entry_price)
 
-            ready = [t for t in trades if t.exit_date <= today]
-            if not ready:
+            if trade.exit_date > today:
                 continue
 
-            for trade in ready:
-                insert_outcome(
-                    signal_id=signal_id,
-                    hold_days=trade.hold_days,
-                    exit_date=trade.exit_date,
-                    exit_price=trade.exit_price,
-                    return_pct=trade.return_pct,
-                    benchmark_return_pct=trade.benchmark_return_pct,
-                    alpha_pct=trade.alpha_pct,
-                    is_win=trade.is_win,
-                    beat_benchmark=trade.beat_benchmark,
-                )
-
-            max_hold = max(HOLD_PERIODS)
-            if any(t.hold_days == max_hold and t.exit_date <= today for t in trades):
-                mark_signal_status(signal_id, "settled")
-                settled_count += 1
-                logger.info("結算信號 %s %s", stock_code, signal_date)
+            insert_outcome(
+                signal_id=signal_id,
+                hold_days=trade.hold_days,
+                exit_date=trade.exit_date,
+                exit_price=trade.exit_price,
+                return_pct=trade.return_pct,
+                benchmark_return_pct=trade.benchmark_return_pct,
+                alpha_pct=trade.alpha_pct,
+                is_win=trade.is_win,
+                beat_benchmark=trade.beat_benchmark,
+            )
+            mark_signal_status(signal_id, "settled")
+            settled_count += 1
+            logger.info("結算信號 %s %s（%s）", stock_code, signal_date, trade.exit_reason)
 
         if settled_count:
             logger.info("前瞻追蹤：結算 %d 筆信號", settled_count)

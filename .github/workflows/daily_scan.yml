@@ -25,6 +25,27 @@ jobs:
           pip install -r requirements.txt
           sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-cjk
 
+      - name: Restore backtest data cache
+        uses: actions/cache/restore@v4
+        id: backtest-cache
+        with:
+          path: |
+            data/backtest.db
+            data/backtest_summary.json
+            data/backtest_trades.csv
+            data/benchmark_0050.parquet
+            data/stock_metadata.json
+          key: backtest-data-${{ github.ref_name }}-${{ github.run_number }}
+          restore-keys: |
+            backtest-data-${{ github.ref_name }}-
+            backtest-data-
+
+      - name: Show restored backtest files
+        run: |
+          mkdir -p data
+          echo "cache-hit: ${{ steps.backtest-cache.outputs.cache-hit }}"
+          ls -la data/backtest.db data/backtest_summary.json data/backtest_trades.csv 2>/dev/null || echo "（首次執行或無快取，將從空白狀態累積）"
+
       - name: Run stock screener
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -36,6 +57,18 @@ jobs:
           else
             python main.py --skip-backtest
           fi
+
+      - name: Save backtest data cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/backtest.db
+            data/backtest_summary.json
+            data/backtest_trades.csv
+            data/benchmark_0050.parquet
+            data/stock_metadata.json
+          key: backtest-data-${{ github.ref_name }}-${{ github.run_number }}
 
       - name: Upload chart artifacts
         if: always()

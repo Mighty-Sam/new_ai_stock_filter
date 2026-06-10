@@ -133,7 +133,8 @@ def main() -> int:
                 print(f"       {note}")
         if historical_summary and historical_summary.period_stats:
             for ps in historical_summary.period_stats:
-                print(f"  回測{ps.hold_days}日: 勝率{ps.win_rate}% n={ps.sample_count}")
+                title = ps.label or f"回測{ps.hold_days}日"
+                print(f"  {title}: 勝率{ps.win_rate}% n={ps.sample_count}")
         return 0
 
     client = TelegramClient()

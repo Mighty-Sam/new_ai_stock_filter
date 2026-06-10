@@ -41,6 +41,7 @@ def _summary_from_dict(data: dict) -> BacktestSummary:
     period_stats = [
         PeriodStats(
             hold_days=ps["hold_days"],
+            label=ps.get("label"),
             sample_count=ps["sample_count"],
             win_rate=ps["win_rate"],
             avg_return_pct=ps["avg_return_pct"],
@@ -86,6 +87,7 @@ def _summary_to_dict(summary: BacktestSummary) -> dict:
         "period_stats": [
             {
                 "hold_days": ps.hold_days,
+                "label": ps.label,
                 "sample_count": ps.sample_count,
                 "win_rate": ps.win_rate,
                 "avg_return_pct": ps.avg_return_pct,
@@ -128,6 +130,7 @@ def save_trades_csv(trades: List[TradeResult]) -> None:
             "exit_date": t.exit_date.isoformat(),
             "exit_price": t.exit_price,
             "hold_days": t.hold_days,
+            "exit_reason": t.exit_reason,
             "return_pct": t.return_pct,
             "benchmark_return_pct": t.benchmark_return_pct,
             "alpha_pct": t.alpha_pct,

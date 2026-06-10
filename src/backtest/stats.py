@@ -7,12 +7,13 @@ from typing import List, Optional
 
 import pandas as pd
 
-from src.backtest.trade_simulator import TradeResult
+from src.backtest.trade_simulator import STRATEGY_LABEL, TradeResult
 
 
 @dataclass
 class PeriodStats:
     hold_days: int
+    label: Optional[str] = None
     sample_count: int = 0
     win_rate: float = 0.0
     avg_return_pct: float = 0.0
@@ -51,20 +52,18 @@ def aggregate_trades(trades: List[TradeResult], source: str = "historical") -> B
     )
 
     period_stats: List[PeriodStats] = []
-    for hold_days in sorted(df["hold_days"].unique()):
-        sub = df[df["hold_days"] == hold_days]
-        n = len(sub)
-        if n == 0:
-            continue
+    n = len(df)
+    if n > 0:
         period_stats.append(
             PeriodStats(
-                hold_days=int(hold_days),
+                hold_days=int(df["hold_days"].max()),
+                label=STRATEGY_LABEL,
                 sample_count=n,
-                win_rate=round(sub["is_win"].mean() * 100, 1),
-                avg_return_pct=round(sub["return_pct"].mean(), 2),
-                median_return_pct=round(sub["return_pct"].median(), 2),
-                beat_benchmark_rate=round(sub["beat_benchmark"].mean() * 100, 1),
-                avg_alpha_pct=round(sub["alpha_pct"].mean(), 2),
+                win_rate=round(df["is_win"].mean() * 100, 1),
+                avg_return_pct=round(df["return_pct"].mean(), 2),
+                median_return_pct=round(df["return_pct"].median(), 2),
+                beat_benchmark_rate=round(df["beat_benchmark"].mean() * 100, 1),
+                avg_alpha_pct=round(df["alpha_pct"].mean(), 2),
             )
         )
 
@@ -78,8 +77,9 @@ def aggregate_trades(trades: List[TradeResult], source: str = "historical") -> B
 
 def format_period_line(stats: PeriodStats) -> str:
     sign = "+" if stats.avg_return_pct >= 0 else ""
+    title = stats.label or f"持有{stats.hold_days}日"
     return (
-        f"持有{stats.hold_days}日：勝率 {stats.win_rate}%（n={stats.sample_count}）"
+        f"{title}：勝率 {stats.win_rate}%（n={stats.sample_count}）"
         f" | 均報酬 {sign}{stats.avg_return_pct}%"
         f" | 贏0050 {stats.beat_benchmark_rate}%"
     )
