@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Generator, List, Optional
 
 DB_PATH = Path("data/backtest.db")
+OPTIMIZED_DB_PATH = Path("data/backtest_optimized.db")
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS signals (
@@ -34,11 +35,20 @@ CREATE TABLE IF NOT EXISTS outcomes (
     alpha_pct REAL NOT NULL,
     is_win INTEGER NOT NULL,
     beat_benchmark INTEGER NOT NULL,
+    exit_reason TEXT,
     settled_at TEXT NOT NULL DEFAULT (datetime('now')),
     FOREIGN KEY (signal_id) REFERENCES signals(id),
     UNIQUE(signal_id, hold_days)
 );
 """
+
+
+def _migrate_schema(conn: sqlite3.Connection) -> None:
+    columns = {
+        row[1] for row in conn.execute("PRAGMA table_info(outcomes)").fetchall()
+    }
+    if "exit_reason" not in columns:
+        conn.execute("ALTER TABLE outcomes ADD COLUMN exit_reason TEXT")
 
 
 @contextmanager
@@ -57,6 +67,7 @@ def get_connection(db_path: Optional[Path] = None) -> Generator[sqlite3.Connecti
 def init_db(db_path: Optional[Path] = None) -> None:
     with get_connection(db_path) as conn:
         conn.executescript(_SCHEMA)
+        _migrate_schema(conn)
 
 
 def insert_signal(
@@ -120,6 +131,7 @@ def insert_outcome(
     alpha_pct: float,
     is_win: bool,
     beat_benchmark: bool,
+    exit_reason: Optional[str] = None,
     db_path: Optional[Path] = None,
 ) -> None:
     with get_connection(db_path) as conn:
@@ -127,8 +139,8 @@ def insert_outcome(
             """
             INSERT OR REPLACE INTO outcomes
             (signal_id, hold_days, exit_date, exit_price, return_pct,
-             benchmark_return_pct, alpha_pct, is_win, beat_benchmark)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+             benchmark_return_pct, alpha_pct, is_win, beat_benchmark, exit_reason)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 signal_id,
@@ -140,6 +152,7 @@ def insert_outcome(
                 alpha_pct,
                 int(is_win),
                 int(beat_benchmark),
+                exit_reason,
             ),
         )
 

@@ -9,6 +9,7 @@ output/
 logs/
 data/cache/
 data/backtest.db
+data/backtest_optimized.db
 data/backtest_*.csv
 data/backtest_summary.json
 data/sl_tp_backtest_*.json
@@ -17,5 +18,7 @@ data/strategy_grid_*.json
 data/strategy_grid_*.csv
 data/v1_vs_v2_baseline.json
 data/benchmark_0050.parquet
+data/market_cap.json
+data/shareholding.json
 *.png
 .DS_Store

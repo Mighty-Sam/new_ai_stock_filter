@@ -27,13 +27,6 @@ if [[ -f "$ROOT/.env" ]]; then
   set +a
 fi
 
-# 週日重跑回測；其餘使用快取（與 GitHub Actions 一致）
-DOW="$(date +%u)"
-if [[ "$DOW" == "7" ]]; then
-  EXTRA_ARGS=(--refresh-backtest)
-else
-  EXTRA_ARGS=(--skip-backtest)
-fi
-
-"$PYTHON" "$ROOT/main.py" "${EXTRA_ARGS[@]}"
+# 優化版推播：略過 3 年歷史回測與題材動能
+"$PYTHON" "$ROOT/main.py" --skip-backtest --skip-theme
 echo "=== daily_scan end $(date -Iseconds) exit=$? ==="

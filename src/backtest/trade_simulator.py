@@ -13,7 +13,7 @@ STOP_LOSS_PCT = 0.10
 TAKE_PROFIT_PCT = 0.30
 STRATEGY_LABEL = "停損-10%/停利+30%（最多20日）"
 
-ExitReason = Literal["stop", "take_profit", "timeout"]
+ExitReason = Literal["stop", "take_profit", "timeout", "fixed_exit"]
 
 # 向後相容：前瞻追蹤結算仍以此判斷最長持有
 HOLD_PERIODS = (MAX_HOLD_DAYS,)
@@ -183,3 +183,65 @@ def simulate_trades(
     del hold_periods
     trade = simulate_trade(stock_code, stock_df, benchmark_df, signal_date)
     return [trade] if trade is not None else []
+
+
+def simulate_fixed_exit(
+    stock_code: str,
+    stock_df: pd.DataFrame,
+    benchmark_df: pd.DataFrame,
+    signal_date: date,
+    exit_date: date,
+) -> Optional[TradeResult]:
+    """
+    信號日 T → T+1 開盤買入 → 固定出場日收盤賣出（不套用停損/停利）。
+    """
+    if stock_df is None or stock_df.empty or benchmark_df is None or benchmark_df.empty:
+        return None
+    if exit_date <= signal_date:
+        return None
+
+    stock_df = stock_df.sort_index()
+    dates = stock_df.index
+    sig_idx = _find_index(dates, signal_date)
+    if sig_idx is None:
+        return None
+
+    entry_idx = _next_trading_index(dates, sig_idx)
+    if entry_idx is None:
+        return None
+
+    exit_idx = _find_index(dates, exit_date)
+    if exit_idx is None or exit_idx < entry_idx:
+        return None
+
+    entry_price = _price_on(stock_df, entry_idx, "open")
+    exit_price = _price_on(stock_df, exit_idx, "close")
+    if entry_price is None or exit_price is None:
+        return None
+
+    entry_date = _to_date(dates[entry_idx])
+    actual_exit_date = _to_date(dates[exit_idx])
+    bench_return = _benchmark_return(benchmark_df, entry_date, actual_exit_date)
+    if bench_return is None:
+        return None
+
+    stock_return = (exit_price - entry_price) / entry_price
+    alpha = stock_return - bench_return
+    hold_days = exit_idx - entry_idx + 1
+
+    return TradeResult(
+        stock_code=stock_code,
+        signal_date=signal_date,
+        entry_date=entry_date,
+        entry_price=round(entry_price, 4),
+        exit_date=actual_exit_date,
+        exit_price=round(exit_price, 4),
+        hold_days=hold_days,
+        return_pct=round(stock_return * 100, 2),
+        benchmark_return_pct=round(bench_return * 100, 2),
+        alpha_pct=round(alpha * 100, 2),
+        is_win=stock_return > 0,
+        beat_benchmark=alpha > 0,
+        exit_reason="fixed_exit",
+        valid=True,
+    )

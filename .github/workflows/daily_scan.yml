@@ -30,45 +30,40 @@ jobs:
         id: backtest-cache
         with:
           path: |
-            data/backtest.db
-            data/backtest_summary.json
-            data/backtest_trades.csv
+            data/backtest_optimized.db
             data/benchmark_0050.parquet
             data/stock_metadata.json
-          key: backtest-data-${{ github.ref_name }}-${{ github.run_number }}
+            data/market_cap.json
+            data/shareholding.json
+          key: backtest-optimized-${{ github.ref_name }}-${{ github.run_number }}
           restore-keys: |
-            backtest-data-${{ github.ref_name }}-
-            backtest-data-
+            backtest-optimized-${{ github.ref_name }}-
+            backtest-optimized-
 
       - name: Show restored backtest files
         run: |
           mkdir -p data
           echo "cache-hit: ${{ steps.backtest-cache.outputs.cache-hit }}"
-          ls -la data/backtest.db data/backtest_summary.json data/backtest_trades.csv 2>/dev/null || echo "（首次執行或無快取，將從空白狀態累積）"
+          ls -la data/backtest_optimized.db 2>/dev/null || echo "（首次執行或無快取，將從空白狀態累積）"
 
       - name: Run stock screener
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           FINMIND_TOKEN: ${{ secrets.FINMIND_TOKEN }}
-        run: |
-          if [ "$(date -u +%u)" = "7" ]; then
-            python main.py --refresh-backtest
-          else
-            python main.py --skip-backtest
-          fi
+        run: python main.py --skip-backtest --skip-theme
 
       - name: Save backtest data cache
         if: always()
         uses: actions/cache/save@v4
         with:
           path: |
-            data/backtest.db
-            data/backtest_summary.json
-            data/backtest_trades.csv
+            data/backtest_optimized.db
             data/benchmark_0050.parquet
             data/stock_metadata.json
-          key: backtest-data-${{ github.ref_name }}-${{ github.run_number }}
+            data/market_cap.json
+            data/shareholding.json
+          key: backtest-optimized-${{ github.ref_name }}-${{ github.run_number }}
 
       - name: Upload chart artifacts
         if: always()
