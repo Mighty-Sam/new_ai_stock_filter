@@ -33,18 +33,16 @@ disable-model-invocation: true
 
 **日常推播**（`main.py`）預設套用上述篩選；`--legacy-v1-all` 還原全部 A+B；`--grade-a-only` 僅 A 級。
 
-## 每日 Telegram 推播（優化版）
+## 每日 Telegram 推播
 
 預設推播**兩則**（題材動能預設關閉，需 `--enable-theme` 才推）：
 
 | 順序 | 內容 | 說明 |
 |------|------|------|
-| 1 | 均線回踩（優化版） | v1→優化檔數、A/B 清單、K 線圖；**不含**近 3 年歷史回測 |
-| 2 | 前瞻回測（優化版） | 停損 -10%/停利 +30% 累計勝率/均報酬 + **當日新結算明細** |
+| 1 | 均線回踩 | 本地預設優化 A+B；**CI/launchd** 用 `--grade-a-only` 僅 A 級 |
+| 2 | 前瞻回測（A 級批次） | 掃描日往回 **20 交易日** 的信號日 A 級 SL/TP 回測明細 |
 
-前瞻追蹤僅記錄**優化後信號**，存於 `data/backtest_optimized.db`（與舊 `backtest.db` 分離）。
-
-GitHub Actions 排程：週日至週五 09:00 UTC（`.github/workflows/daily_scan.yml`）。
+前瞻追蹤存於 `data/backtest_optimized.db`。GitHub Actions：`--grade-a-only --skip-backtest --skip-theme`。
 
 ## 執行命令
 
@@ -99,6 +97,7 @@ cd /Users/sam.rm.lee/Desktop/AI_side_project/new_ai_stock_filter
 | CLI | `scripts/analyze_signal_date_hold.py` |
 | 歷史日掃描 | `src/screener/scanner.py` → `scan_market(end_date=...)` |
 | 日常推播 | `main.py`（預設 `filter_optimized`、雙則 Telegram） |
+| 交易日曆 | `src/data/trading_calendar.py` |
 | 前瞻 DB | `data/backtest_optimized.db` |
 
 ## 完成後必做：優化分析 checklist

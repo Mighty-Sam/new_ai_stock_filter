@@ -51,7 +51,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           FINMIND_TOKEN: ${{ secrets.FINMIND_TOKEN }}
-        run: python main.py --skip-backtest --skip-theme
+        run: python main.py --skip-backtest --skip-theme --grade-a-only
 
       - name: Save backtest data cache
         if: always()

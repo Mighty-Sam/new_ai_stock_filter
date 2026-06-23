@@ -116,3 +116,42 @@ def test_init_db_migrates_exit_reason_column(tmp_path: Path):
     columns = {row[1] for row in conn.execute("PRAGMA table_info(outcomes)").fetchall()}
     conn.close()
     assert "exit_reason" in columns
+
+
+def test_get_maturity_cohort_from_db(tmp_path: Path):
+    db_path = tmp_path / "test.db"
+    start = date(2024, 1, 2)
+    stock_df = _make_ohlcv(start, 40, base=100.0)
+    bench_df = _make_ohlcv(start, 40, base=50.0)
+
+    from src.data.trading_calendar import offset_trading_days
+
+    as_of = bench_df.index[-1].date()
+    signal_date = offset_trading_days(as_of, -20, bench_df)
+    assert signal_date is not None
+    insert_signal("2330", signal_date, signal_date, db_path=db_path)
+
+    tracker = ForwardTracker(db_path=db_path)
+    tracker._benchmark_df = bench_df
+
+    with patch.object(tracker, "_fetch_stock_df", return_value=stock_df):
+        tracker.settle_matured_trades(as_of=as_of)
+        cohort = tracker.get_maturity_cohort(as_of)
+
+    assert cohort.signal_date == signal_date
+    assert cohort.has_trades
+    assert cohort.trades[0].stock_code == "2330"
+
+
+def test_get_maturity_cohort_warmup(tmp_path: Path):
+    db_path = tmp_path / "test.db"
+    start = date(2024, 1, 2)
+    bench_df = _make_ohlcv(start, 10, base=50.0)
+    tracker = ForwardTracker(db_path=db_path)
+    tracker._benchmark_df = bench_df
+
+    with patch.object(tracker, "settle_matured_trades", return_value=[]):
+        cohort = tracker.get_maturity_cohort(bench_df.index[-1].date())
+
+    assert cohort.is_warmup
+    assert not cohort.has_trades

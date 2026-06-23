@@ -27,6 +27,6 @@ if [[ -f "$ROOT/.env" ]]; then
   set +a
 fi
 
-# 優化版推播：略過 3 年歷史回測與題材動能
-"$PYTHON" "$ROOT/main.py" --skip-backtest --skip-theme
+# 優化版推播：略過 3 年歷史回測與題材動能，僅推播 A 級
+"$PYTHON" "$ROOT/main.py" --skip-backtest --skip-theme --grade-a-only
 echo "=== daily_scan end $(date -Iseconds) exit=$? ==="

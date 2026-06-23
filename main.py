@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 from src.backtest.historical import get_or_run_backtest
 from src.backtest.tracker import ForwardTracker
 from src.chart.candlestick import plot_candlestick
+from src.chart.cohort_charts import build_cohort_charts
 from src.data.stock_list import get_stock_list
 from src.data.stock_metadata import get_stock_metadata, lookup_metadata
 from src.notify.telegram_client import TelegramClient
@@ -75,8 +76,10 @@ def main() -> int:
     output_dir = Path(args.output_dir)
     ma_output_dir = output_dir
     theme_output_dir = output_dir / "theme"
+    cohort_output_dir = output_dir / "cohort"
     ma_output_dir.mkdir(parents=True, exist_ok=True)
     theme_output_dir.mkdir(parents=True, exist_ok=True)
+    cohort_output_dir.mkdir(parents=True, exist_ok=True)
 
     metadata = get_stock_metadata()
     scan = scan_market(max_workers=args.workers, stock_limit=args.limit)
@@ -161,10 +164,12 @@ def main() -> int:
 
     tracker = ForwardTracker()
     tracker.record_signals([g.result for g in results], scan.scan_date)
-    settled = tracker.settle_matured_trades(as_of=scan.scan_date)
-    today_settled = [t for t in settled if t.exit_date == scan.scan_date]
-    forward_summary = tracker.get_stats()
-    pending_count = tracker.count_pending()
+    cohort = tracker.get_maturity_cohort(scan.scan_date)
+    cohort_chart_paths = build_cohort_charts(
+        cohort,
+        stock_names=stock_names,
+        output_dir=cohort_output_dir,
+    )
 
     if args.refresh_backtest:
         historical_summary = get_or_run_backtest(
@@ -180,21 +185,27 @@ def main() -> int:
 
     if args.dry_run:
         client = TelegramClient()
+        label = "A 級" if args.grade_a_only else "優化版"
         logger.info(
-            "Dry run 均線回踩（優化版）：v1 %d 檔 → 優化後 %d 檔",
+            "Dry run 均線回踩（%s）：v1 %d 檔 → 推播 %d 檔",
+            label,
             v1_total,
             len(results),
         )
-        print(client.format_summary(results, stock_names, scan_date_str, metadata, v1_total=v1_total))
-        print()
         print(
-            client.format_forward_backtest(
+            client.format_summary(
+                results,
+                stock_names,
                 scan_date_str,
-                forward_summary,
-                today_settled,
-                pending_count,
+                metadata,
+                v1_total=v1_total,
+                grade_a_only=args.grade_a_only,
             )
         )
+        print()
+        print(client.format_forward_backtest(scan_date_str, cohort))
+        if cohort_chart_paths:
+            logger.info("Dry run 回測圖表：%s", list(cohort_chart_paths.keys()))
         for line in format_rotation_block(results, metadata):
             print(line)
         for g in results:
@@ -237,15 +248,17 @@ def main() -> int:
         chart_paths=chart_paths,
         scan_date=scan_date_str,
         metadata=metadata,
-        v1_total=v1_total if not args.legacy_v1_all and not args.grade_a_only else 0,
+        v1_total=v1_total if not args.legacy_v1_all else 0,
+        grade_a_only=args.grade_a_only,
     )
     logger.info("均線回踩 Telegram 推播完成")
 
     client.notify_forward_backtest(
         scan_date=scan_date_str,
-        forward_summary=forward_summary,
-        today_settled=today_settled,
-        pending_count=pending_count,
+        cohort=cohort,
+        chart_paths=cohort_chart_paths,
+        stock_names=stock_names,
+        metadata=metadata,
     )
     logger.info("前瞻回測 Telegram 推播完成")
 

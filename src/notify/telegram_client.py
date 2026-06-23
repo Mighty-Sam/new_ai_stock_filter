@@ -10,8 +10,8 @@ from typing import Dict, List, Optional
 
 import requests
 
-from src.backtest.stats import BacktestSummary, format_period_line
-from src.backtest.tracker import EXIT_REASON_LABELS, SettledTrade
+from src.backtest.stats import format_period_line
+from src.backtest.tracker import EXIT_REASON_LABELS, MaturityCohortReport
 from src.backtest.trade_simulator import STRATEGY_LABEL
 from src.data.stock_metadata import StockMetadata, lookup_metadata
 from src.screener.grading import GradedScreenResult
@@ -125,27 +125,29 @@ class TelegramClient:
         scan_date: str,
         metadata: Optional[Dict[str, StockMetadata]] = None,
         v1_total: int = 0,
+        grade_a_only: bool = False,
     ) -> str:
         meta = metadata or {}
         grade_a = [r for r in results if r.grade == "A"]
         grade_b = [r for r in results if r.grade == "B"]
-        count_line = (
-            f"v1 符合 {v1_total} 檔 → 優化後 {len(results)} 檔"
-            f"（A 級 {len(grade_a)} / B 級 {len(grade_b)}）"
-            if v1_total > 0
-            else f"符合：{len(results)} 檔（A 級 {len(grade_a)} / B 級 {len(grade_b)}）"
-        )
+        if grade_a_only and v1_total > 0:
+            count_line = f"v1 符合 {v1_total} 檔 → A 級 {len(results)} 檔"
+            title = "📊 台股均線回踩選股（A 級）"
+        elif v1_total > 0:
+            count_line = (
+                f"v1 符合 {v1_total} 檔 → 優化後 {len(results)} 檔"
+                f"（A 級 {len(grade_a)} / B 級 {len(grade_b)}）"
+            )
+            title = "📊 台股均線回踩選股（優化版）"
+        else:
+            count_line = f"符合：{len(results)} 檔（A 級 {len(grade_a)} / B 級 {len(grade_b)}）"
+            title = "📊 台股均線回踩選股（優化版）"
 
         if not results:
-            return (
-                f"📊 台股均線回踩選股（優化版）\n"
-                f"日期：{scan_date}\n"
-                f"{count_line}\n\n"
-                f"今日無符合條件個股。"
-            )
+            return f"{title}\n日期：{scan_date}\n{count_line}\n\n今日無符合條件個股。"
 
         lines = [
-            "📊 台股均線回踩選股（優化版）",
+            title,
             f"日期：{scan_date}",
             count_line,
             "",
@@ -160,7 +162,7 @@ class TelegramClient:
                 lines.append(f"... 其餘 A 級 {len(grade_a) - 10} 檔")
             lines.append("")
 
-        if grade_b:
+        if grade_b and not grade_a_only:
             lines.append("【B 級 — 次級參考】")
             for i, g in enumerate(grade_b[:10], 1):
                 lines.append(self._format_graded_line(g, i, stock_names, meta))
@@ -172,38 +174,51 @@ class TelegramClient:
     def format_forward_backtest(
         self,
         scan_date: str,
-        forward_summary: Optional[BacktestSummary],
-        today_settled: List[SettledTrade],
-        pending_count: int = 0,
+        cohort: MaturityCohortReport,
     ) -> str:
         lines = [
-            "📈 均線回踩 — 前瞻回測（優化版）",
-            f"日期：{scan_date}",
-            f"規則：{STRATEGY_LABEL}",
-            "",
-            "--- 累計 ---",
+            "📈 均線回踩 — 前瞻回測（A 級批次）",
+            f"掃描日：{scan_date}",
         ]
-        if forward_summary and forward_summary.period_stats:
-            for ps in forward_summary.period_stats:
+        if cohort.is_warmup:
+            lines.extend(
+                [
+                    f"規則：{STRATEGY_LABEL}",
+                    "",
+                    f"尚無可回報批次（需累積至少 {cohort.lookback_days} 個交易日）",
+                ]
+            )
+            return "\n".join(lines)
+
+        signal_str = cohort.signal_date.strftime("%Y/%m/%d")
+        lines.extend(
+            [
+                f"信號日：{signal_str}（{cohort.lookback_days} 交易日前）",
+                f"規則：{STRATEGY_LABEL}",
+                "",
+                "--- 該日 A 級回測 ---",
+            ]
+        )
+
+        if not cohort.has_trades:
+            lines.append("該信號日無 A 級選股")
+            return "\n".join(lines)
+
+        if cohort.summary and cohort.summary.period_stats:
+            for ps in cohort.summary.period_stats:
                 lines.append(format_period_line(ps))
         else:
-            lines.append("尚無已結算資料")
+            lines.append("尚無有效回測資料")
 
-        if pending_count > 0:
-            lines.append(f"追蹤中：{pending_count} 檔尚未結算")
-
-        lines.append("")
-        lines.append("--- 今日結算 ---")
-        if today_settled:
-            for i, t in enumerate(today_settled, 1):
-                reason = EXIT_REASON_LABELS.get(t.exit_reason, t.exit_reason)
-                sign = "+" if t.return_pct >= 0 else ""
-                lines.append(
-                    f"{i}. {t.stock_code} {reason} {sign}{t.return_pct:.1f}%"
-                    f"（持有 {t.hold_days} 日）"
-                )
-        else:
-            lines.append("今日無新結算")
+        for i, t in enumerate(cohort.trades, 1):
+            reason = EXIT_REASON_LABELS.get(t.exit_reason, t.exit_reason)
+            sign = "+" if t.return_pct >= 0 else ""
+            lines.append(
+                f"{i}. {t.stock_code} {reason} {sign}{t.return_pct:.1f}%"
+                f"（買 {t.entry_date.month}/{t.entry_date.day} {t.entry_price:.2f}"
+                f" → {t.exit_date.month}/{t.exit_date.day} {t.exit_price:.2f}，"
+                f"持有 {t.hold_days} 日）"
+            )
 
         return "\n".join(lines)
 
@@ -216,6 +231,7 @@ class TelegramClient:
         metadata: Optional[Dict[str, StockMetadata]] = None,
         batch_delay: float = 1.0,
         v1_total: int = 0,
+        grade_a_only: bool = False,
     ) -> None:
         if not self.configured:
             logger.warning("Telegram 未設定")
@@ -228,6 +244,7 @@ class TelegramClient:
             scan_date,
             metadata=meta,
             v1_total=v1_total,
+            grade_a_only=grade_a_only,
         )
         self.send_message(summary)
         time.sleep(batch_delay)
@@ -248,26 +265,54 @@ class TelegramClient:
                 self.send_photo(path, caption="\n".join(caption_lines))
                 time.sleep(batch_delay)
 
+    def _format_cohort_trade_caption(
+        self,
+        trade,
+        stock_names: Dict[str, str],
+        metadata: Optional[Dict[str, StockMetadata]] = None,
+    ) -> str:
+        meta = metadata or {}
+        name = stock_names.get(trade.stock_code, trade.stock_code)
+        reason = EXIT_REASON_LABELS.get(trade.exit_reason, trade.exit_reason)
+        sign = "+" if trade.return_pct >= 0 else ""
+        lines = [
+            f"📈 回測 {trade.stock_code} {name}",
+            f"信號 {trade.signal_date.strftime('%Y/%m/%d')}",
+            f"買進 {trade.entry_date.strftime('%m/%d')} {trade.entry_price:.2f}",
+            f"{reason} {trade.exit_date.strftime('%m/%d')} {trade.exit_price:.2f}（{sign}{trade.return_pct:.1f}%）",
+            f"持有 {trade.hold_days} 日",
+        ]
+        if meta:
+            lines.append(self._format_industry_caption(trade.stock_code, meta))
+        return "\n".join(lines)
+
     def notify_forward_backtest(
         self,
         scan_date: str,
-        forward_summary: Optional[BacktestSummary],
-        today_settled: List[SettledTrade],
-        pending_count: int = 0,
+        cohort: MaturityCohortReport,
+        chart_paths: Optional[Dict[str, Path]] = None,
+        stock_names: Optional[Dict[str, str]] = None,
+        metadata: Optional[Dict[str, StockMetadata]] = None,
         batch_delay: float = 1.0,
     ) -> None:
         if not self.configured:
             logger.warning("Telegram 未設定")
             return
 
-        summary = self.format_forward_backtest(
-            scan_date=scan_date,
-            forward_summary=forward_summary,
-            today_settled=today_settled,
-            pending_count=pending_count,
-        )
+        summary = self.format_forward_backtest(scan_date=scan_date, cohort=cohort)
         self.send_message(summary)
         time.sleep(batch_delay)
+
+        if not cohort.has_trades or not chart_paths:
+            return
+
+        names = stock_names or {}
+        for trade in cohort.trades:
+            path = chart_paths.get(trade.stock_code)
+            if path and path.exists():
+                caption = self._format_cohort_trade_caption(trade, names, metadata)
+                self.send_photo(path, caption=caption)
+                time.sleep(batch_delay)
 
     def _format_theme_line(
         self,

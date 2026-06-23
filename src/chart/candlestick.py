@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from datetime import date
 from functools import lru_cache
 from pathlib import Path
 from typing import Optional
@@ -187,6 +188,165 @@ def plot_candlestick(
                 ha="left",
                 bbox=box_props,
             )
+    ax_price.set_ylabel("Price")
+    ax_price.legend(loc="upper left", fontsize=8)
+    ax_price.grid(True, alpha=0.2)
+
+    vol_colors = [
+        "#EF5350" if row["close"] >= row["open"] else "#26A69A"
+        for _, row in plot_df.iterrows()
+    ]
+    ax_vol.bar(x, plot_df["volume"], color=vol_colors, alpha=0.7)
+    ax_vol.set_ylabel("Volume")
+    ax_vol.grid(True, alpha=0.2)
+
+    step = max(1, len(plot_df) // 8)
+    tick_idx = list(range(0, len(plot_df), step))
+    tick_labels = [dates[i].strftime("%m/%d") for i in tick_idx]
+    ax_vol.set_xticks(tick_idx)
+    ax_vol.set_xticklabels(tick_labels, rotation=45)
+    ax_price.set_xticks(tick_idx)
+    ax_price.set_xticklabels([])
+
+    plt.tight_layout()
+    fig.savefig(out, dpi=150, bbox_inches="tight", facecolor="#1a1a1a")
+    plt.close(fig)
+    return out
+
+
+def _date_index(plot_df: pd.DataFrame, target: date) -> Optional[int]:
+    ts = pd.Timestamp(target)
+    if ts in plot_df.index:
+        return list(plot_df.index).index(ts)
+    for i, idx in enumerate(plot_df.index):
+        if pd.Timestamp(idx).date() == target:
+            return i
+    return None
+
+
+def plot_backtest_candlestick(
+    df: pd.DataFrame,
+    stock_code: str,
+    stock_name: str,
+    signal_date: date,
+    entry_date: date,
+    entry_price: float,
+    exit_date: date,
+    exit_price: float,
+    exit_reason: str,
+    output_path: Optional[Path] = None,
+    bars: int = CHART_BARS,
+) -> Path:
+    """繪製回測 K 線圖，標註信號日、買進與停損/停利/到期賣出。"""
+    if df is None or df.empty:
+        raise ValueError("無資料可繪圖")
+
+    exit_ts = pd.Timestamp(exit_date)
+    sig_ts = pd.Timestamp(signal_date)
+    end_idx = df.index.get_indexer([exit_ts], method="pad")[0]
+    if end_idx < 0:
+        end_idx = len(df) - 1
+    start_idx = max(0, end_idx - bars + 1)
+    plot_df = df.iloc[start_idx : end_idx + 1].copy()
+    if plot_df.empty:
+        plot_df = df.tail(bars).copy()
+
+    out = output_path or Path("output") / "cohort" / f"{stock_code}.png"
+    out.parent.mkdir(parents=True, exist_ok=True)
+
+    reason_labels = {
+        "stop": "停損",
+        "take_profit": "停利",
+        "timeout": "到期",
+        "fixed_exit": "固定出場",
+    }
+    exit_label = reason_labels.get(exit_reason, exit_reason)
+    exit_colors = {
+        "stop": "#EF5350",
+        "take_profit": "#66BB6A",
+        "timeout": "#FFCA28",
+        "fixed_exit": "#AB47BC",
+    }
+    exit_color = exit_colors.get(exit_reason, "#FFFFFF")
+
+    plt.style.use("dark_background")
+    cjk_font = _setup_cjk_font()
+    fig, (ax_price, ax_vol) = plt.subplots(
+        2, 1, figsize=(12, 8), gridspec_kw={"height_ratios": [3, 1]}
+    )
+
+    dates = plot_df.index
+    x = range(len(plot_df))
+
+    for i, (_, row) in enumerate(plot_df.iterrows()):
+        o, h, l, c = row["open"], row["high"], row["low"], row["close"]
+        color = "#EF5350" if c >= o else "#26A69A"
+        ax_price.plot([i, i], [l, h], color=color, linewidth=0.8)
+        body_h = abs(c - o)
+        body_b = min(o, c)
+        rect = Rectangle(
+            (i - 0.35, body_b),
+            0.7,
+            body_h if body_h > 0 else 0.01,
+            facecolor=color,
+            edgecolor=color,
+            linewidth=0.5,
+        )
+        ax_price.add_patch(rect)
+
+    for ma_col in ("ma5", "ma10", "ma20", "ma60", "ma120"):
+        if ma_col in plot_df.columns:
+            ax_price.plot(
+                x,
+                plot_df[ma_col],
+                color=MA_COLORS[ma_col],
+                linewidth=1.2,
+                label=MA_LABELS[ma_col],
+            )
+
+    sig_i = _date_index(plot_df, signal_date)
+    if sig_i is not None:
+        ax_price.axvline(sig_i, color="#B0BEC5", linestyle="--", linewidth=1, alpha=0.8)
+        ax_price.text(
+            sig_i,
+            plot_df["high"].max(),
+            f"信號 {sig_ts.strftime('%m/%d')}",
+            color="#B0BEC5",
+            fontsize=8,
+            ha="center",
+            va="bottom",
+        )
+
+    entry_i = _date_index(plot_df, entry_date)
+    if entry_i is not None:
+        ax_price.scatter(entry_i, entry_price, marker="^", s=120, color="#66BB6A", zorder=5)
+        ax_price.annotate(
+            f"買 {entry_date.month}/{entry_date.day} {entry_price:.2f}",
+            (entry_i, entry_price),
+            textcoords="offset points",
+            xytext=(8, 12),
+            fontsize=9,
+            color="#66BB6A",
+        )
+
+    exit_i = _date_index(plot_df, exit_date)
+    if exit_i is not None:
+        ax_price.scatter(exit_i, exit_price, marker="v", s=120, color=exit_color, zorder=5)
+        ax_price.annotate(
+            f"{exit_label} {exit_date.month}/{exit_date.day} {exit_price:.2f}",
+            (exit_i, exit_price),
+            textcoords="offset points",
+            xytext=(8, -18),
+            fontsize=9,
+            color=exit_color,
+        )
+
+    title = f"{stock_code} {stock_name} — 回測 {sig_ts.strftime('%Y/%m/%d')}"
+    if cjk_font is not None:
+        ax_price.set_title(title, fontsize=14, fontproperties=cjk_font)
+    else:
+        ax_price.set_title(title, fontsize=14)
+
     ax_price.set_ylabel("Price")
     ax_price.legend(loc="upper left", fontsize=8)
     ax_price.grid(True, alpha=0.2)

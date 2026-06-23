@@ -172,6 +172,26 @@ def get_all_outcomes(db_path: Optional[Path] = None) -> List[sqlite3.Row]:
         )
 
 
+def get_outcomes_by_signal_date(
+    signal_date: date,
+    db_path: Optional[Path] = None,
+) -> List[sqlite3.Row]:
+    init_db(db_path)
+    with get_connection(db_path) as conn:
+        return list(
+            conn.execute(
+                """
+                SELECT o.*, s.stock_code, s.signal_date, s.entry_date, s.entry_price
+                FROM outcomes o
+                JOIN signals s ON s.id = o.signal_id
+                WHERE s.signal_date = ?
+                ORDER BY s.stock_code
+                """,
+                (signal_date.isoformat(),),
+            )
+        )
+
+
 def count_pending_signals(db_path: Optional[Path] = None) -> int:
     init_db(db_path)
     with get_connection(db_path) as conn:
