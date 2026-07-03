@@ -6,12 +6,13 @@ from dataclasses import dataclass
 from typing import List
 
 from src.screener.grading import GradedScreenResult
+from src.screener.params import MAX_A_GRADE_GAIN_PCT
 
 # 2026-06-01 信號 → 6/2 開買 → 6/18 收賣回測結論：
 # - A 級 2 檔勝率 100%、均報酬 +12.6%；B 級 68 檔均報酬 -2.2%
 # - 跌 ≤-10% 有 22 檔，多為 B + 量能偏弱 + 20K 漲幅過高
 # - MA5 子樣本優於 MA10；MA10 需更高量能門檻
-MAX_SIGNAL_GAIN_PCT = 30.0
+MAX_SIGNAL_GAIN_PCT = MAX_A_GRADE_GAIN_PCT
 MIN_VOLUME_RATIO_B = 1.0
 MIN_VOLUME_RATIO_MA10 = 1.2
 MIN_DIST_TO_HIGH_PCT = 3.0

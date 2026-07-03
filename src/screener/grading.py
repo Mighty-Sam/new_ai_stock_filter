@@ -8,7 +8,7 @@ from typing import List, Literal, Optional
 import pandas as pd
 
 from src.screener.conditions import ScreenResult, evaluate_with_params
-from src.screener.params import V2_BASE_PARAMS
+from src.screener.params import V2_BASE_PARAMS, MAX_A_GRADE_GAIN_PCT
 from src.screener.strategy_consolidation import (
     AMPLITUDE_LOOKBACK,
     GAIN_LOOKBACK,
@@ -130,11 +130,12 @@ def grade_screen_result(df: pd.DataFrame, v1_result: ScreenResult) -> GradedScre
 
     v2_result = evaluate_with_params(df, v1_result.stock_code, V2_BASE_PARAMS)
     consolidation = passes_consolidation_strategy(df)
+    gain_ok_for_a = v1_result.gain_pct <= MAX_A_GRADE_GAIN_PCT
 
     a_source: Optional[ASource] = None
-    if v2_result is not None:
+    if v2_result is not None and gain_ok_for_a:
         a_source = "v2"
-    elif consolidation:
+    elif consolidation and gain_ok_for_a:
         a_source = "consolidation"
     grade: Grade = "A" if a_source is not None else "B"
 
@@ -151,6 +152,12 @@ def grade_screen_result(df: pd.DataFrame, v1_result: ScreenResult) -> GradedScre
         notes.insert(
             0,
             f"⭐ A 級：縮幅回踩（50K漲幅 {g50}%｜{AMPLITUDE_LOOKBACK}K振幅 {amp10}%）",
+        )
+    elif (v2_result is not None or consolidation) and not gain_ok_for_a:
+        notes.insert(
+            0,
+            f"B 級：技術面達 A 但 20K漲幅 {v1_result.gain_pct}%"
+            f" 超過上限 {MAX_A_GRADE_GAIN_PCT:.0f}%",
         )
     else:
         notes.insert(0, "B 級：僅 v1 條件（次級、小倉或略過）")

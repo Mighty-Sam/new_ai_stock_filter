@@ -5,6 +5,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 LOOKBACK_BARS = 20
+# 20K 漲幅上限：超過則不給 A 級（與優化推播 B 級門檻同源，2026-06-01 回測）
+MAX_A_GRADE_GAIN_PCT = 30.0
 
 
 @dataclass(frozen=True)

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
+
 import pandas as pd
 import pytest
 
@@ -62,6 +64,15 @@ def test_grade_a_when_consolidation_passes():
     assert graded.grade == "A"
     assert graded.a_source == "consolidation"
     assert "縮幅回踩" in graded.review_notes[0]
+
+
+def test_grade_b_when_gain_exceeds_a_cap_despite_v2():
+    df = _make_v2_pass_df()
+    v1 = replace(_v1_only_result(), gain_pct=45.0)
+    graded = grade_screen_result(df, v1)
+    assert graded.grade == "B"
+    assert graded.a_source is None
+    assert "超過上限 30%" in graded.review_notes[0]
 
 
 def test_grade_b_when_neither_v2_nor_consolidation():
