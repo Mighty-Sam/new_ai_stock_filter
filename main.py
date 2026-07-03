@@ -15,6 +15,7 @@ from src.backtest.historical import get_or_run_backtest
 from src.backtest.tracker import ForwardTracker
 from src.chart.candlestick import plot_candlestick
 from src.chart.cohort_charts import build_cohort_charts
+from src.data.institutional import fetch_institutional_flows
 from src.data.stock_list import get_stock_list
 from src.data.stock_metadata import get_stock_metadata, lookup_metadata
 from src.notify.telegram_client import TelegramClient
@@ -171,6 +172,18 @@ def main() -> int:
         output_dir=cohort_output_dir,
     )
 
+    push_codes = [g.stock_code for g in results]
+    cohort_codes = [t.stock_code for t in cohort.trades] if cohort.has_trades else []
+    chip_codes = sorted(set(push_codes + cohort_codes))
+    chip_flows = fetch_institutional_flows(chip_codes, end_date=scan.scan_date)
+    if chip_flows:
+        logger.info("法人籌碼：已取得 %d 檔", len(chip_flows))
+
+    a_v2 = sum(1 for g in scan.results if g.a_source == "v2")
+    a_cons = sum(1 for g in scan.results if g.a_source == "consolidation")
+    if a_v2 or a_cons:
+        logger.info("A 級分布：v2=%d / 縮幅回踩=%d", a_v2, a_cons)
+
     if args.refresh_backtest:
         historical_summary = get_or_run_backtest(
             refresh=True,
@@ -200,6 +213,7 @@ def main() -> int:
                 metadata,
                 v1_total=v1_total,
                 grade_a_only=args.grade_a_only,
+                chip_flows=chip_flows,
             )
         )
         print()
@@ -250,6 +264,7 @@ def main() -> int:
         metadata=metadata,
         v1_total=v1_total if not args.legacy_v1_all else 0,
         grade_a_only=args.grade_a_only,
+        chip_flows=chip_flows,
     )
     logger.info("均線回踩 Telegram 推播完成")
 
@@ -259,6 +274,7 @@ def main() -> int:
         chart_paths=cohort_chart_paths,
         stock_names=stock_names,
         metadata=metadata,
+        chip_flows=chip_flows,
     )
     logger.info("前瞻回測 Telegram 推播完成")
 

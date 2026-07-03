@@ -4,9 +4,13 @@ from __future__ import annotations
 
 from datetime import date
 
+import pandas as pd
+
 from src.backtest.stats import BacktestSummary, PeriodStats
 from src.backtest.tracker import MaturityCohortReport, SettledTrade
 from src.notify.telegram_client import TelegramClient
+from src.screener.conditions import ScreenResult
+from src.screener.grading import GradedScreenResult
 
 
 def test_format_summary_optimized_with_v1_total():
@@ -97,3 +101,51 @@ def test_format_forward_backtest_no_picks():
     )
     text = client.format_forward_backtest(scan_date="2026/06/29", cohort=cohort)
     assert "該信號日無 A 級選股" in text
+
+
+def test_format_summary_includes_chip_line():
+    from src.data.institutional import InstitutionalFlow
+
+    client = TelegramClient(bot_token="x", chat_id="y")
+    flow = InstitutionalFlow(
+        stock_code="2330",
+        as_of_date=date(2026, 6, 20),
+        foreign_net_lots=100.0,
+        trust_net_lots=20.0,
+        dealer_net_lots=5.0,
+        total_net_lots=125.0,
+        sum_5d_net_lots=200.0,
+        consecutive_buy_days=1,
+    )
+    graded = GradedScreenResult(
+        result=ScreenResult(
+            stock_code="2330",
+            signal_date=pd.Timestamp("2026-06-20"),
+            close=100.0,
+            gain_pct=18.0,
+            retest_ma="ma5",
+            golden_cross_date=pd.Timestamp("2026-06-15"),
+            death_cross_date=pd.Timestamp("2026-06-01"),
+            oscillation_bars=4,
+            ma20=98.0,
+            ma60=95.0,
+            ma120=90.0,
+            volume=600_000,
+        ),
+        grade="A",
+        volume_ratio=1.2,
+        retest_touch_pct=0.5,
+        dist_to_high_pct=5.0,
+        a_source="v2",
+        review_notes=["⭐ A 級：v2 嚴選", "note"],
+    )
+    text = client.format_summary(
+        [graded],
+        {"2330": "台積電"},
+        "2026/06/20",
+        chip_flows={"2330": flow},
+    )
+    assert "籌碼(06/20)" in text
+    assert "外資+100張↑" in text
+    assert "[v2嚴選] 2330" in text
+    assert "⭐ A 級：v2 嚴選" in text

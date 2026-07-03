@@ -13,8 +13,10 @@ import requests
 from src.backtest.stats import format_period_line
 from src.backtest.tracker import EXIT_REASON_LABELS, MaturityCohortReport
 from src.backtest.trade_simulator import STRATEGY_LABEL
+from src.data.institutional import InstitutionalFlow, format_chip_line
 from src.data.stock_metadata import StockMetadata, lookup_metadata
 from src.screener.grading import GradedScreenResult
+from src.screener.grading import format_a_source_badge
 from src.screener.sector_summary import format_rotation_block, format_theme_rotation_block
 from src.screener.theme_conditions import ThemeScreenResult
 
@@ -103,17 +105,26 @@ class TelegramClient:
         index: int,
         stock_names: Dict[str, str],
         metadata: Dict[str, StockMetadata],
+        chip_flows: Optional[Dict[str, InstitutionalFlow]] = None,
     ) -> str:
         r = graded.result
         name = stock_names.get(r.stock_code, "")
         ma_label = "MA5" if r.retest_ma == "ma5" else "MA10"
         grade_icon = "⭐" if graded.grade == "A" else "○"
+        strategy_tag = ""
+        if graded.grade == "A" and graded.a_source:
+            strategy_tag = f"[{format_a_source_badge(graded.a_source)}] "
         lines = [
-            f"{index}. {grade_icon} {r.stock_code} {name}",
+            f"{index}. {grade_icon} {strategy_tag}{r.stock_code} {name}",
             f"   [{graded.grade}級] 收盤 {r.close:.2f} | 20K漲幅 {r.gain_pct}%",
             self._format_industry_line(r.stock_code, metadata),
             f"   回踩 {ma_label} | 整理 {r.oscillation_bars} 根 | 量比 {graded.volume_ratio:.2f}×",
         ]
+        flow = (chip_flows or {}).get(r.stock_code)
+        if flow is not None:
+            lines.append(format_chip_line(flow))
+        if graded.review_notes:
+            lines.append(f"   {graded.review_notes[0]}")
         for note in graded.review_notes[1:4]:
             lines.append(f"   {note}")
         return "\n".join(lines)
@@ -126,12 +137,18 @@ class TelegramClient:
         metadata: Optional[Dict[str, StockMetadata]] = None,
         v1_total: int = 0,
         grade_a_only: bool = False,
+        chip_flows: Optional[Dict[str, InstitutionalFlow]] = None,
     ) -> str:
         meta = metadata or {}
         grade_a = [r for r in results if r.grade == "A"]
         grade_b = [r for r in results if r.grade == "B"]
         if grade_a_only and v1_total > 0:
-            count_line = f"v1 符合 {v1_total} 檔 → A 級 {len(results)} 檔"
+            a_v2 = sum(1 for r in grade_a if r.a_source == "v2")
+            a_cons = sum(1 for r in grade_a if r.a_source == "consolidation")
+            count_line = (
+                f"v1 符合 {v1_total} 檔 → A 級 {len(results)} 檔"
+                f"（v2嚴選 {a_v2} / 縮幅回踩 {a_cons}）"
+            )
             title = "📊 台股均線回踩選股（A 級）"
         elif v1_total > 0:
             count_line = (
@@ -157,7 +174,9 @@ class TelegramClient:
         if grade_a:
             lines.append("【A 級 — 優先觀察】")
             for i, g in enumerate(grade_a[:10], 1):
-                lines.append(self._format_graded_line(g, i, stock_names, meta))
+                lines.append(
+                    self._format_graded_line(g, i, stock_names, meta, chip_flows=chip_flows)
+                )
             if len(grade_a) > 10:
                 lines.append(f"... 其餘 A 級 {len(grade_a) - 10} 檔")
             lines.append("")
@@ -165,7 +184,9 @@ class TelegramClient:
         if grade_b and not grade_a_only:
             lines.append("【B 級 — 次級參考】")
             for i, g in enumerate(grade_b[:10], 1):
-                lines.append(self._format_graded_line(g, i, stock_names, meta))
+                lines.append(
+                    self._format_graded_line(g, i, stock_names, meta, chip_flows=chip_flows)
+                )
             if len(grade_b) > 10:
                 lines.append(f"... 其餘 B 級 {len(grade_b) - 10} 檔")
 
@@ -232,6 +253,7 @@ class TelegramClient:
         batch_delay: float = 1.0,
         v1_total: int = 0,
         grade_a_only: bool = False,
+        chip_flows: Optional[Dict[str, InstitutionalFlow]] = None,
     ) -> None:
         if not self.configured:
             logger.warning("Telegram 未設定")
@@ -245,22 +267,32 @@ class TelegramClient:
             metadata=meta,
             v1_total=v1_total,
             grade_a_only=grade_a_only,
+            chip_flows=chip_flows,
         )
         self.send_message(summary)
         time.sleep(batch_delay)
 
+        chips = chip_flows or {}
         for g in results:
             path = chart_paths.get(g.stock_code)
             if path and path.exists():
                 r = g.result
                 name = stock_names.get(g.stock_code, g.stock_code)
                 ma_label = "MA5" if r.retest_ma == "ma5" else "MA10"
+                strategy_tag = ""
+                if g.grade == "A" and g.a_source:
+                    strategy_tag = f"[{format_a_source_badge(g.a_source)}] "
                 caption_lines = [
-                    f"📈 [{g.grade}級] {g.stock_code} {name}",
+                    f"📈 [{g.grade}級] {strategy_tag}{g.stock_code} {name}",
                     f"收盤 {r.close:.2f} | 漲幅 {r.gain_pct}%",
                     self._format_industry_caption(g.stock_code, meta),
                     f"回踩 {ma_label} | 量比 {g.volume_ratio:.2f}×",
                 ]
+                flow = chips.get(g.stock_code)
+                if flow is not None:
+                    caption_lines.append(format_chip_line(flow, indent=False))
+                if g.review_notes:
+                    caption_lines.append(g.review_notes[0])
                 caption_lines.extend(g.review_notes[1:3])
                 self.send_photo(path, caption="\n".join(caption_lines))
                 time.sleep(batch_delay)
@@ -270,6 +302,7 @@ class TelegramClient:
         trade,
         stock_names: Dict[str, str],
         metadata: Optional[Dict[str, StockMetadata]] = None,
+        chip_flow: Optional[InstitutionalFlow] = None,
     ) -> str:
         meta = metadata or {}
         name = stock_names.get(trade.stock_code, trade.stock_code)
@@ -284,6 +317,8 @@ class TelegramClient:
         ]
         if meta:
             lines.append(self._format_industry_caption(trade.stock_code, meta))
+        if chip_flow is not None:
+            lines.append(format_chip_line(chip_flow, indent=False))
         return "\n".join(lines)
 
     def notify_forward_backtest(
@@ -293,6 +328,7 @@ class TelegramClient:
         chart_paths: Optional[Dict[str, Path]] = None,
         stock_names: Optional[Dict[str, str]] = None,
         metadata: Optional[Dict[str, StockMetadata]] = None,
+        chip_flows: Optional[Dict[str, InstitutionalFlow]] = None,
         batch_delay: float = 1.0,
     ) -> None:
         if not self.configured:
@@ -307,10 +343,16 @@ class TelegramClient:
             return
 
         names = stock_names or {}
+        chips = chip_flows or {}
         for trade in cohort.trades:
             path = chart_paths.get(trade.stock_code)
             if path and path.exists():
-                caption = self._format_cohort_trade_caption(trade, names, metadata)
+                caption = self._format_cohort_trade_caption(
+                    trade,
+                    names,
+                    metadata,
+                    chip_flow=chips.get(trade.stock_code),
+                )
                 self.send_photo(path, caption=caption)
                 time.sleep(batch_delay)
 

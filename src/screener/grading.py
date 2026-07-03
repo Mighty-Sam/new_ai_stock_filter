@@ -3,14 +3,33 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import List, Literal
+from typing import List, Literal, Optional
 
 import pandas as pd
 
 from src.screener.conditions import ScreenResult, evaluate_with_params
 from src.screener.params import V2_BASE_PARAMS
+from src.screener.strategy_consolidation import (
+    AMPLITUDE_LOOKBACK,
+    GAIN_LOOKBACK,
+    gain_ratio_n,
+    amplitude_ratio_n,
+    passes_consolidation_strategy,
+)
 
 Grade = Literal["A", "B"]
+ASource = Literal["v2", "consolidation"]
+
+A_SOURCE_LABELS = {
+    "v2": "v2嚴選",
+    "consolidation": "縮幅回踩",
+}
+
+
+def format_a_source_badge(a_source: Optional[ASource]) -> str:
+    if a_source is None:
+        return ""
+    return A_SOURCE_LABELS.get(a_source, a_source)
 
 
 @dataclass
@@ -22,6 +41,7 @@ class GradedScreenResult:
     volume_ratio: float
     retest_touch_pct: float
     dist_to_high_pct: float
+    a_source: Optional[ASource] = None
     review_notes: List[str] = field(default_factory=list)
 
     @property
@@ -104,20 +124,34 @@ def build_review_notes(
 
 
 def grade_screen_result(df: pd.DataFrame, v1_result: ScreenResult) -> GradedScreenResult:
-    """v1 已通過；若同時符合 v2 則為 A 級，否則 B 級。"""
+    """v1 已通過；A 級 = v2 嚴選 OR 縮幅回踩新策略。"""
     signal_idx = len(df) - 1
     row = df.iloc[signal_idx]
 
     v2_result = evaluate_with_params(df, v1_result.stock_code, V2_BASE_PARAMS)
-    grade: Grade = "A" if v2_result is not None else "B"
+    consolidation = passes_consolidation_strategy(df)
+
+    a_source: Optional[ASource] = None
+    if v2_result is not None:
+        a_source = "v2"
+    elif consolidation:
+        a_source = "consolidation"
+    grade: Grade = "A" if a_source is not None else "B"
 
     vol_ratio = _volume_ratio(df, signal_idx)
     touch_pct = _retest_touch_pct(row, v1_result.retest_ma)
     dist_high = _dist_to_high_pct(df, signal_idx)
     notes = build_review_notes(touch_pct, v1_result.retest_ma, vol_ratio, dist_high)
 
-    if grade == "A":
-        notes.insert(0, "⭐ A 級：符合 v2 嚴選（優先觀察、可加大部位）")
+    if a_source == "v2":
+        notes.insert(0, "⭐ A 級：v2 嚴選（優先觀察、可加大部位）")
+    elif a_source == "consolidation":
+        g50 = round(gain_ratio_n(df, signal_idx, GAIN_LOOKBACK) * 100, 1)
+        amp10 = round(amplitude_ratio_n(df, signal_idx, AMPLITUDE_LOOKBACK) * 100, 1)
+        notes.insert(
+            0,
+            f"⭐ A 級：縮幅回踩（50K漲幅 {g50}%｜{AMPLITUDE_LOOKBACK}K振幅 {amp10}%）",
+        )
     else:
         notes.insert(0, "B 級：僅 v1 條件（次級、小倉或略過）")
 
@@ -127,6 +161,7 @@ def grade_screen_result(df: pd.DataFrame, v1_result: ScreenResult) -> GradedScre
         volume_ratio=vol_ratio,
         retest_touch_pct=touch_pct,
         dist_to_high_pct=dist_high,
+        a_source=a_source,
         review_notes=notes,
     )
 

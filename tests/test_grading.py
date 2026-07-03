@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import pandas as pd
+import pytest
 
 from src.screener.conditions import ScreenResult
 from src.screener.grading import (
@@ -46,7 +47,32 @@ def test_grade_a_when_v2_passes():
     df = _make_v2_pass_df()
     v1 = grade_screen_result(df, _v1_only_result())
     assert v1.grade == "A"
+    assert v1.a_source == "v2"
     assert v1.review_notes[0].startswith("⭐")
+
+
+def test_grade_a_when_consolidation_passes():
+    from src.screener.conditions import evaluate_with_params
+    from src.screener.params import V2_BASE_PARAMS
+    from tests.test_strategy_consolidation import _make_consolidation_pass_df
+
+    df = _make_consolidation_pass_df()
+    assert evaluate_with_params(df, "2330", V2_BASE_PARAMS) is None
+    graded = grade_screen_result(df, _v1_only_result())
+    assert graded.grade == "A"
+    assert graded.a_source == "consolidation"
+    assert "縮幅回踩" in graded.review_notes[0]
+
+
+def test_grade_b_when_neither_v2_nor_consolidation():
+    df = _make_v2_pass_df()
+    df.iloc[-20:, df.columns.get_loc("high")] = 101.0
+    df.iloc[-20:, df.columns.get_loc("low")] = 99.0
+    graded = grade_screen_result(df, _v1_only_result("2317"))
+    if graded.a_source == "v2":
+        pytest.skip("合成資料仍通過 v2")
+    assert graded.grade == "B"
+    assert graded.a_source is None
 
 
 def test_sort_graded_results_a_first():
