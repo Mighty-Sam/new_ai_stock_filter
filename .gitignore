@@ -9,7 +9,11 @@ output/
 logs/
 data/cache/
 data/backtest.db
+data/backtest.db-wal
+data/backtest.db-shm
 data/backtest_optimized.db
+data/backtest_optimized.db-wal
+data/backtest_optimized.db-shm
 data/backtest_*.csv
 data/backtest_summary.json
 data/sl_tp_backtest_*.json

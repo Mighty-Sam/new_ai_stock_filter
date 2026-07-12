@@ -2,14 +2,19 @@
 
 from __future__ import annotations
 
+import logging
 import sqlite3
 from contextlib import contextmanager
 from datetime import date
 from pathlib import Path
-from typing import Generator, List, Optional
+from typing import Generator, List, Optional, Tuple
+
+logger = logging.getLogger(__name__)
 
 DB_PATH = Path("data/backtest.db")
 OPTIMIZED_DB_PATH = Path("data/backtest_optimized.db")
+
+BUSY_TIMEOUT_MS = 5000
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS signals (
@@ -43,12 +48,25 @@ CREATE TABLE IF NOT EXISTS outcomes (
 """
 
 
+# 新增欄位時在此追加一筆 (table, column, ddl)；_migrate_schema 會自動判斷是否需要執行，
+# 對已套用過的 DB 是安全的 no-op。
+_COLUMN_MIGRATIONS: List[Tuple[str, str, str]] = [
+    ("outcomes", "exit_reason", "ALTER TABLE outcomes ADD COLUMN exit_reason TEXT"),
+]
+
+
 def _migrate_schema(conn: sqlite3.Connection) -> None:
-    columns = {
-        row[1] for row in conn.execute("PRAGMA table_info(outcomes)").fetchall()
-    }
-    if "exit_reason" not in columns:
-        conn.execute("ALTER TABLE outcomes ADD COLUMN exit_reason TEXT")
+    for table, column, ddl in _COLUMN_MIGRATIONS:
+        columns = {
+            row[1] for row in conn.execute(f"PRAGMA table_info({table})").fetchall()
+        }
+        if column not in columns:
+            try:
+                conn.execute(ddl)
+            except sqlite3.OperationalError as exc:
+                # 另一個重疊執行的行程可能已在檢查與 ALTER 之間搶先完成同一遷移。
+                if "duplicate column" not in str(exc).lower():
+                    raise
 
 
 @contextmanager
@@ -57,6 +75,10 @@ def get_connection(db_path: Optional[Path] = None) -> Generator[sqlite3.Connecti
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(path)
     conn.row_factory = sqlite3.Row
+    # WAL + busy_timeout：多個排程（GitHub Actions / launchd）重疊執行時，寫入方等待
+    # 而非立即拋出 "database is locked"。
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute(f"PRAGMA busy_timeout={BUSY_TIMEOUT_MS}")
     try:
         yield conn
         conn.commit()
@@ -94,6 +116,7 @@ def insert_signal(
                 return int(row["id"]) if row else None
             return int(cur.lastrowid)
         except sqlite3.Error:
+            logger.warning("寫入信號失敗 (stock_code=%s)", stock_code, exc_info=True)
             return None
 
 
@@ -108,17 +131,27 @@ def update_signal_entry(
     entry_date: date,
     entry_price: float,
     db_path: Optional[Path] = None,
-) -> None:
+) -> bool:
     with get_connection(db_path) as conn:
-        conn.execute(
-            "UPDATE signals SET entry_date=?, entry_price=? WHERE id=?",
-            (entry_date.isoformat(), entry_price, signal_id),
-        )
+        try:
+            conn.execute(
+                "UPDATE signals SET entry_date=?, entry_price=? WHERE id=?",
+                (entry_date.isoformat(), entry_price, signal_id),
+            )
+            return True
+        except sqlite3.Error:
+            logger.warning("更新信號進場價失敗 (signal_id=%s)", signal_id, exc_info=True)
+            return False
 
 
-def mark_signal_status(signal_id: int, status: str, db_path: Optional[Path] = None) -> None:
+def mark_signal_status(signal_id: int, status: str, db_path: Optional[Path] = None) -> bool:
     with get_connection(db_path) as conn:
-        conn.execute("UPDATE signals SET status=? WHERE id=?", (status, signal_id))
+        try:
+            conn.execute("UPDATE signals SET status=? WHERE id=?", (status, signal_id))
+            return True
+        except sqlite3.Error:
+            logger.warning("更新信號狀態失敗 (signal_id=%s)", signal_id, exc_info=True)
+            return False
 
 
 def insert_outcome(
@@ -133,28 +166,33 @@ def insert_outcome(
     beat_benchmark: bool,
     exit_reason: Optional[str] = None,
     db_path: Optional[Path] = None,
-) -> None:
+) -> bool:
     with get_connection(db_path) as conn:
-        conn.execute(
-            """
-            INSERT OR REPLACE INTO outcomes
-            (signal_id, hold_days, exit_date, exit_price, return_pct,
-             benchmark_return_pct, alpha_pct, is_win, beat_benchmark, exit_reason)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            (
-                signal_id,
-                hold_days,
-                exit_date.isoformat(),
-                exit_price,
-                return_pct,
-                benchmark_return_pct,
-                alpha_pct,
-                int(is_win),
-                int(beat_benchmark),
-                exit_reason,
-            ),
-        )
+        try:
+            conn.execute(
+                """
+                INSERT OR REPLACE INTO outcomes
+                (signal_id, hold_days, exit_date, exit_price, return_pct,
+                 benchmark_return_pct, alpha_pct, is_win, beat_benchmark, exit_reason)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    signal_id,
+                    hold_days,
+                    exit_date.isoformat(),
+                    exit_price,
+                    return_pct,
+                    benchmark_return_pct,
+                    alpha_pct,
+                    int(is_win),
+                    int(beat_benchmark),
+                    exit_reason,
+                ),
+            )
+            return True
+        except sqlite3.Error:
+            logger.warning("寫入回測結果失敗 (signal_id=%s)", signal_id, exc_info=True)
+            return False
 
 
 def get_all_outcomes(db_path: Optional[Path] = None) -> List[sqlite3.Row]:

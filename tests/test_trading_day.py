@@ -6,7 +6,7 @@ from datetime import date
 
 import pandas as pd
 
-from src.screener.scanner import is_trading_day
+from src.screener.scan_runner import is_trading_day
 
 
 class _FakeFetcher:

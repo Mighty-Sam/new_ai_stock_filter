@@ -149,3 +149,32 @@ def test_format_summary_includes_chip_line():
     assert "外資+100張↑" in text
     assert "[v2嚴選] 2330" in text
     assert "⭐ A 級：v2 嚴選" in text
+
+
+def test_format_volume_surge_summary():
+    from src.screener.volume_surge import VolumeSurgeResult
+
+    client = TelegramClient(bot_token="x", chat_id="y")
+    result = VolumeSurgeResult(
+        stock_code="5460",
+        signal_date=pd.Timestamp("2026-06-30"),
+        close=18.95,
+        daily_gain_pct=1.85,
+        volume=2_130_000,
+        vol_ratio_5d=5.2,
+        vol_ratio_20d=11.1,
+        ma60=17.5,
+        touched_ma="ma5",
+        review_notes=["量能 5.2×（5日）/ 11.1×（20日）", "低點 ≤ MA5（允許略破）"],
+    )
+    text = client.format_volume_surge_summary(
+        [result],
+        {"5460": "同協"},
+        "2026/07/03",
+    )
+    assert "爆量價穩選股" in text
+    assert "5460 同協" in text
+    assert "5.2×（5日）" in text
+    assert "11.1×（20日）" in text
+    assert "低點 ≤ MA5" in text
+    assert "當日漲幅 +1.85%" in text

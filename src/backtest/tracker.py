@@ -137,7 +137,7 @@ class ForwardTracker:
             if trade.exit_date > today:
                 continue
 
-            insert_outcome(
+            outcome_ok = insert_outcome(
                 signal_id=signal_id,
                 hold_days=trade.hold_days,
                 exit_date=trade.exit_date,
@@ -150,6 +150,13 @@ class ForwardTracker:
                 exit_reason=trade.exit_reason,
                 db_path=self.db_path,
             )
+            if not outcome_ok:
+                logger.warning(
+                    "結算信號 %s %s 寫入回測結果失敗，保留 pending 待下次重試",
+                    stock_code,
+                    signal_date,
+                )
+                continue
             mark_signal_status(signal_id, "settled", db_path=self.db_path)
             settled.append(
                 SettledTrade(
@@ -256,7 +263,8 @@ class ForwardTracker:
 
         rows = get_outcomes_by_signal_date(signal_date, db_path=self.db_path)
         if rows:
-            settled = [self._row_to_settled(r) for r in rows]
+            valid_rows = [r for r in rows if r["entry_date"] is not None and r["entry_price"] is not None]
+            settled = [self._row_to_settled(r) for r in valid_rows]
             trade_results = self._rows_to_trade_results(rows)
         else:
             settled, trade_results = self._backfill_cohort(signal_date, as_of)

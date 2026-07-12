@@ -23,6 +23,7 @@ from src.screener.optimized_filter import filter_optimized
 from src.screener.scanner import scan_market
 from src.screener.sector_summary import format_rotation_block, format_theme_rotation_block
 from src.screener.theme_scanner import scan_theme_momentum
+from src.screener.volume_surge import scan_volume_surge
 
 logging.basicConfig(
     level=logging.INFO,
@@ -66,6 +67,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="啟用低位題材動能選股推播",
     )
+    parser.add_argument(
+        "--skip-volume-surge",
+        action="store_true",
+        help="略過爆量價穩選股（測試用）",
+    )
     return parser.parse_args()
 
 
@@ -77,14 +83,24 @@ def main() -> int:
     output_dir = Path(args.output_dir)
     ma_output_dir = output_dir
     theme_output_dir = output_dir / "theme"
+    volume_output_dir = output_dir / "volume_surge"
     cohort_output_dir = output_dir / "cohort"
     ma_output_dir.mkdir(parents=True, exist_ok=True)
     theme_output_dir.mkdir(parents=True, exist_ok=True)
+    volume_output_dir.mkdir(parents=True, exist_ok=True)
     cohort_output_dir.mkdir(parents=True, exist_ok=True)
 
     metadata = get_stock_metadata()
     scan = scan_market(max_workers=args.workers, stock_limit=args.limit)
     v1_total = len(scan.results)
+
+    if not scan.is_trading_day and not args.skip_trading_check:
+        msg = f"今日 ({scan.scan_date}) 非交易日，略過掃描。"
+        logger.info(msg)
+        if not args.dry_run:
+            TelegramClient().send_message(f"📊 台股均線回踩選股（優化版）\n{msg}")
+        return 0
+
     if args.grade_a_only:
         results = scan.grade_a
     elif args.legacy_v1_all:
@@ -99,18 +115,24 @@ def main() -> int:
 
     theme_scan = None
     if not skip_theme:
-        theme_scan = scan_theme_momentum(max_workers=args.workers, stock_limit=args.limit)
+        theme_scan = scan_theme_momentum(
+            max_workers=args.workers,
+            stock_limit=args.limit,
+            trading_day=scan.is_trading_day,
+        )
 
-    if not scan.is_trading_day and not args.skip_trading_check:
-        msg = f"今日 ({scan.scan_date}) 非交易日，略過掃描。"
-        logger.info(msg)
-        if not args.dry_run:
-            TelegramClient().send_message(f"📊 台股均線回踩選股（優化版）\n{msg}")
-        return 0
+    volume_scan = None
+    if not args.skip_volume_surge:
+        volume_scan = scan_volume_surge(
+            max_workers=args.workers,
+            stock_limit=args.limit,
+            trading_day=scan.is_trading_day,
+        )
 
     stock_names = get_stock_list()
     chart_paths = {}
     theme_chart_paths = {}
+    volume_chart_paths = {}
 
     for graded in results:
         result = graded.result
@@ -161,6 +183,31 @@ def main() -> int:
                 tr.market_cap_billions,
             )
 
+    if volume_scan is not None:
+        for vr in volume_scan.results:
+            name = stock_names.get(vr.stock_code, "")
+            df = volume_scan.price_data.get(vr.stock_code)
+            if df is None:
+                continue
+            path = plot_candlestick(
+                df=df,
+                stock_code=vr.stock_code,
+                stock_name=name,
+                signal_date=vr.signal_date,
+                output_path=volume_output_dir / f"{vr.stock_code}.png",
+                grade=None,
+                review_notes=vr.review_notes,
+            )
+            volume_chart_paths[vr.stock_code] = path
+            logger.info(
+                "爆量價穩: %s %s | 當日漲幅 %.2f%% | 量 %.1f×/%.1f×",
+                vr.stock_code,
+                name,
+                vr.daily_gain_pct,
+                vr.vol_ratio_5d,
+                vr.vol_ratio_20d,
+            )
+
     scan_date_str = scan.scan_date.strftime("%Y/%m/%d")
 
     tracker = ForwardTracker()
@@ -174,7 +221,8 @@ def main() -> int:
 
     push_codes = [g.stock_code for g in results]
     cohort_codes = [t.stock_code for t in cohort.trades] if cohort.has_trades else []
-    chip_codes = sorted(set(push_codes + cohort_codes))
+    volume_codes = [v.stock_code for v in volume_scan.results] if volume_scan else []
+    chip_codes = sorted(set(push_codes + cohort_codes + volume_codes))
     chip_flows = fetch_institutional_flows(chip_codes, end_date=scan.scan_date)
     if chip_flows:
         logger.info("法人籌碼：已取得 %d 檔", len(chip_flows))
@@ -249,6 +297,24 @@ def main() -> int:
                     f"cap={tr.market_cap_billions}億 hold={tr.director_holding_pct}% "
                     f"產業={tr.industry}"
                 )
+
+        if volume_scan is not None:
+            print()
+            logger.info("Dry run 爆量價穩：%d 檔", len(volume_scan.results))
+            print(
+                client.format_volume_surge_summary(
+                    volume_scan.results,
+                    stock_names,
+                    scan_date_str,
+                    metadata=metadata,
+                    chip_flows=chip_flows,
+                )
+            )
+            for vr in volume_scan.results:
+                print(
+                    f"  {vr.stock_code} close={vr.close} gain={vr.daily_gain_pct}% "
+                    f"vol5={vr.vol_ratio_5d}× vol20={vr.vol_ratio_20d}×"
+                )
         return 0
 
     client = TelegramClient()
@@ -277,6 +343,17 @@ def main() -> int:
         chip_flows=chip_flows,
     )
     logger.info("前瞻回測 Telegram 推播完成")
+
+    if volume_scan is not None:
+        client.notify_volume_surge_results(
+            results=volume_scan.results,
+            stock_names=stock_names,
+            chart_paths=volume_chart_paths,
+            scan_date=scan_date_str,
+            metadata=metadata,
+            chip_flows=chip_flows,
+        )
+        logger.info("爆量價穩 Telegram 推播完成")
 
     if theme_scan is not None:
         client.notify_theme_results(

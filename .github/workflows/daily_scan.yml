@@ -35,6 +35,7 @@ jobs:
             data/stock_metadata.json
             data/market_cap.json
             data/shareholding.json
+            data/cache/prices
           key: backtest-optimized-${{ github.ref_name }}-${{ github.run_number }}
           restore-keys: |
             backtest-optimized-${{ github.ref_name }}-
@@ -63,6 +64,7 @@ jobs:
             data/stock_metadata.json
             data/market_cap.json
             data/shareholding.json
+            data/cache/prices
           key: backtest-optimized-${{ github.ref_name }}-${{ github.run_number }}
 
       - name: Upload chart artifacts
@@ -70,5 +72,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: stock-charts-${{ github.run_id }}
-          path: output/*.png
+          path: |
+            output/*.png
+            output/volume_surge/*.png
           retention-days: 7

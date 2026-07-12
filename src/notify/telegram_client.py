@@ -19,6 +19,7 @@ from src.screener.grading import GradedScreenResult
 from src.screener.grading import format_a_source_badge
 from src.screener.sector_summary import format_rotation_block, format_theme_rotation_block
 from src.screener.theme_conditions import ThemeScreenResult
+from src.screener.volume_surge import VolumeSurgeResult, format_touched_ma_label
 
 logger = logging.getLogger(__name__)
 
@@ -354,6 +355,104 @@ class TelegramClient:
                     chip_flow=chips.get(trade.stock_code),
                 )
                 self.send_photo(path, caption=caption)
+                time.sleep(batch_delay)
+
+    def _format_volume_surge_line(
+        self,
+        result: VolumeSurgeResult,
+        index: int,
+        stock_names: Dict[str, str],
+        metadata: Dict[str, StockMetadata],
+        chip_flows: Optional[Dict[str, InstitutionalFlow]] = None,
+    ) -> str:
+        name = stock_names.get(result.stock_code, "")
+        sign = "+" if result.daily_gain_pct >= 0 else ""
+        touch_label = format_touched_ma_label(result.touched_ma)
+        lines = [
+            f"{index}. {result.stock_code} {name}",
+            f"   收盤 {result.close:.2f} | 當日漲幅 {sign}{result.daily_gain_pct:.2f}%",
+            self._format_industry_line(result.stock_code, metadata),
+            f"   量能 {result.vol_ratio_5d:.1f}×（5日）/ {result.vol_ratio_20d:.1f}×（20日）"
+            f" | 低點 ≤ {touch_label} | 收盤 > MA60",
+        ]
+        flow = (chip_flows or {}).get(result.stock_code)
+        if flow is not None:
+            lines.append(format_chip_line(flow))
+        for note in result.review_notes:
+            lines.append(f"   {note}")
+        return "\n".join(lines)
+
+    def format_volume_surge_summary(
+        self,
+        results: List[VolumeSurgeResult],
+        stock_names: Dict[str, str],
+        scan_date: str,
+        metadata: Optional[Dict[str, StockMetadata]] = None,
+        chip_flows: Optional[Dict[str, InstitutionalFlow]] = None,
+    ) -> str:
+        meta = metadata or {}
+        title = "📊 爆量價穩選股"
+        if not results:
+            return f"{title}\n日期：{scan_date}\n\n今日無符合條件個股。"
+
+        lines = [
+            title,
+            f"日期：{scan_date}",
+            f"符合：{len(results)} 檔",
+            "",
+        ]
+        for i, r in enumerate(results[:15], 1):
+            lines.append(
+                self._format_volume_surge_line(r, i, stock_names, meta, chip_flows=chip_flows)
+            )
+        if len(results) > 15:
+            lines.append(f"... 其餘 {len(results) - 15} 檔")
+        return "\n".join(lines)
+
+    def notify_volume_surge_results(
+        self,
+        results: List[VolumeSurgeResult],
+        stock_names: Dict[str, str],
+        chart_paths: Dict[str, Path],
+        scan_date: str,
+        metadata: Optional[Dict[str, StockMetadata]] = None,
+        chip_flows: Optional[Dict[str, InstitutionalFlow]] = None,
+        batch_delay: float = 1.0,
+    ) -> None:
+        if not self.configured:
+            logger.warning("Telegram 未設定")
+            return
+
+        meta = metadata or {}
+        summary = self.format_volume_surge_summary(
+            results,
+            stock_names,
+            scan_date,
+            metadata=meta,
+            chip_flows=chip_flows,
+        )
+        self.send_message(summary)
+        time.sleep(batch_delay)
+
+        chips = chip_flows or {}
+        for r in results:
+            path = chart_paths.get(r.stock_code)
+            if path and path.exists():
+                name = stock_names.get(r.stock_code, r.stock_code)
+                sign = "+" if r.daily_gain_pct >= 0 else ""
+                touch_label = format_touched_ma_label(r.touched_ma)
+                caption_lines = [
+                    f"📊 爆量價穩 {r.stock_code} {name}",
+                    f"收盤 {r.close:.2f} | 當日漲幅 {sign}{r.daily_gain_pct:.2f}%",
+                    self._format_industry_caption(r.stock_code, meta),
+                    f"量能 {r.vol_ratio_5d:.1f}×（5日）/ {r.vol_ratio_20d:.1f}×（20日）"
+                    f" | 低點 ≤ {touch_label}",
+                ]
+                flow = chips.get(r.stock_code)
+                if flow is not None:
+                    caption_lines.append(format_chip_line(flow, indent=False))
+                caption_lines.extend(r.review_notes)
+                self.send_photo(path, caption="\n".join(caption_lines))
                 time.sleep(batch_delay)
 
     def _format_theme_line(
