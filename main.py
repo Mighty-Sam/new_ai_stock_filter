@@ -24,6 +24,7 @@ from src.screener.scanner import scan_market
 from src.screener.sector_summary import format_rotation_block, format_theme_rotation_block
 from src.screener.theme_scanner import scan_theme_momentum
 from src.screener.volume_surge import scan_volume_surge
+from src.screener.w_bottom import scan_w_bottom
 
 logging.basicConfig(
     level=logging.INFO,
@@ -72,6 +73,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="略過爆量價穩選股（測試用）",
     )
+    parser.add_argument(
+        "--skip-w-bottom",
+        action="store_true",
+        help="略過 N漲W底假跌破選股（測試用）",
+    )
     return parser.parse_args()
 
 
@@ -84,10 +90,12 @@ def main() -> int:
     ma_output_dir = output_dir
     theme_output_dir = output_dir / "theme"
     volume_output_dir = output_dir / "volume_surge"
+    w_bottom_output_dir = output_dir / "w_bottom"
     cohort_output_dir = output_dir / "cohort"
     ma_output_dir.mkdir(parents=True, exist_ok=True)
     theme_output_dir.mkdir(parents=True, exist_ok=True)
     volume_output_dir.mkdir(parents=True, exist_ok=True)
+    w_bottom_output_dir.mkdir(parents=True, exist_ok=True)
     cohort_output_dir.mkdir(parents=True, exist_ok=True)
 
     metadata = get_stock_metadata()
@@ -129,10 +137,19 @@ def main() -> int:
             trading_day=scan.is_trading_day,
         )
 
+    w_bottom_scan = None
+    if not args.skip_w_bottom:
+        w_bottom_scan = scan_w_bottom(
+            max_workers=args.workers,
+            stock_limit=args.limit,
+            trading_day=scan.is_trading_day,
+        )
+
     stock_names = get_stock_list()
     chart_paths = {}
     theme_chart_paths = {}
     volume_chart_paths = {}
+    w_bottom_chart_paths = {}
 
     for graded in results:
         result = graded.result
@@ -208,6 +225,31 @@ def main() -> int:
                 vr.vol_ratio_20d,
             )
 
+    if w_bottom_scan is not None:
+        for wr in w_bottom_scan.results:
+            name = stock_names.get(wr.stock_code, "")
+            df = w_bottom_scan.price_data.get(wr.stock_code)
+            if df is None:
+                continue
+            path = plot_candlestick(
+                df=df,
+                stock_code=wr.stock_code,
+                stock_name=name,
+                signal_date=wr.signal_date,
+                output_path=w_bottom_output_dir / f"{wr.stock_code}.png",
+                grade=None,
+                review_notes=wr.review_notes,
+            )
+            w_bottom_chart_paths[wr.stock_code] = path
+            logger.info(
+                "N漲W底假跌破: %s %s | 前波漲幅 %.1f%% | 停利 %.2f | 停損 %.2f",
+                wr.stock_code,
+                name,
+                wr.rally_pct,
+                wr.take_profit_price,
+                wr.stop_loss_price,
+            )
+
     scan_date_str = scan.scan_date.strftime("%Y/%m/%d")
 
     tracker = ForwardTracker()
@@ -222,7 +264,8 @@ def main() -> int:
     push_codes = [g.stock_code for g in results]
     cohort_codes = [t.stock_code for t in cohort.trades] if cohort.has_trades else []
     volume_codes = [v.stock_code for v in volume_scan.results] if volume_scan else []
-    chip_codes = sorted(set(push_codes + cohort_codes + volume_codes))
+    w_bottom_codes = [w.stock_code for w in w_bottom_scan.results] if w_bottom_scan else []
+    chip_codes = sorted(set(push_codes + cohort_codes + volume_codes + w_bottom_codes))
     chip_flows = fetch_institutional_flows(chip_codes, end_date=scan.scan_date)
     if chip_flows:
         logger.info("法人籌碼：已取得 %d 檔", len(chip_flows))
@@ -315,6 +358,25 @@ def main() -> int:
                     f"  {vr.stock_code} close={vr.close} gain={vr.daily_gain_pct}% "
                     f"vol5={vr.vol_ratio_5d}× vol20={vr.vol_ratio_20d}×"
                 )
+
+        if w_bottom_scan is not None:
+            print()
+            logger.info("Dry run N漲W底假跌破：%d 檔", len(w_bottom_scan.results))
+            print(
+                client.format_w_bottom_summary(
+                    w_bottom_scan.results,
+                    stock_names,
+                    scan_date_str,
+                    metadata=metadata,
+                    chip_flows=chip_flows,
+                )
+            )
+            for wr in w_bottom_scan.results:
+                print(
+                    f"  {wr.stock_code} close={wr.close} rally={wr.rally_pct}% "
+                    f"leg1={wr.leg1_low} leg2={wr.leg2_low} "
+                    f"tp={wr.take_profit_price} sl={wr.stop_loss_price}"
+                )
         return 0
 
     client = TelegramClient()
@@ -354,6 +416,17 @@ def main() -> int:
             chip_flows=chip_flows,
         )
         logger.info("爆量價穩 Telegram 推播完成")
+
+    if w_bottom_scan is not None:
+        client.notify_w_bottom_results(
+            results=w_bottom_scan.results,
+            stock_names=stock_names,
+            chart_paths=w_bottom_chart_paths,
+            scan_date=scan_date_str,
+            metadata=metadata,
+            chip_flows=chip_flows,
+        )
+        logger.info("N漲W底假跌破 Telegram 推播完成")
 
     if theme_scan is not None:
         client.notify_theme_results(

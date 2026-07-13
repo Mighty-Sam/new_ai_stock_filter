@@ -18,6 +18,8 @@ data/backtest_*.csv
 data/backtest_summary.json
 data/sl_tp_backtest_*.json
 data/sl_tp_backtest_*.csv
+data/w_bottom_backtest_*.json
+data/w_bottom_backtest_*.csv
 data/strategy_grid_*.json
 data/strategy_grid_*.csv
 data/v1_vs_v2_baseline.json
