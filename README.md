@@ -179,7 +179,7 @@ Telegram 摘要會顯示每檔 **產業** 與 **族群**。第二則為 20 交�
 ```
 
 - K 線圖：`output/volume_surge/{股號}.png`
-- 推播順序：均線回踩 → 前瞻回測 → 爆量價穩 → **N漲W底假跌破** →（選用）題材動能
+- 推播順序：均線回踩 → 前瞻回測 → 爆量價穩 → N漲W底假跌破 → **漲停量縮整理** →（選用）題材動能
 
 ## N漲W底假跌破選股（每日預設推播）
 
@@ -218,9 +218,47 @@ Telegram 摘要會顯示每檔 **產業** 與 **族群**。第二則為 20 交�
 - 輸出：`data/w_bottom_backtest_summary.json`、`data/w_bottom_backtest_trades.csv`
 - 本階段**不含**獨立前瞻追蹤
 
+## 漲停量縮整理選股（每日預設推播）
+
+與其他策略完全獨立；每日排程預設執行（第五則 Telegram）。漲停後接連幾天量能逐日萎縮、股價守在漲停日區間內盤整，視為主力鎖籌/洗盤蓄勢的型態。型態橫跨 **4 根連續 K 棒**：最新一根為 day4（訊號日），漲停日為往回第 3 根（day1）。
+
+| 條件 | 門檻 |
+|------|------|
+| day1 漲停 | 當日漲幅 `(收−昨收)/昨收` ≥ **9.5%**（近似，容忍分檔取整） |
+| day1 趨勢 | 漲停日前 **5** 個交易日 MA20 嚴格逐日遞增 |
+| day1 量能 | 漲停日成交量 ≥ **1000 張**（1,000,000 股；排除無漲停限制商品的假訊號） |
+| day2 | **收陰線**（收盤 < 開盤）**且** 量 < **2×** day1 量 |
+| day3 | 量 < day2 量 **且** 收盤 ≤ day1 最高 |
+| day4 | 量 < day3 量 **且** 收盤 ≤ day1 最高 |
+| day2/3/4 | 各收盤 ≥ day1 最低（守住漲停日低點） |
+
+**回測規則：**
+- 買入：訊號日（day4）隔日開盤價
+- 停利：**進場價 +20%**（當日高點觸及；依進場價計算）
+- 停損：股價**收盤**跌破 day1 最低價
+- 同日同時觸及：保守先判停損；逾 **20** 交易日未觸發則強制收盤出場
+
+```bash
+# 測試（略過推播）
+.venv/bin/python3.11 main.py --dry-run --limit 100 --skip-backtest
+
+# 關閉漲停量縮整理掃描
+.venv/bin/python3.11 main.py --skip-limit-up
+
+# 近 3 年歷史回測（24 小時快取）
+.venv/bin/python3.11 scripts/run_limit_up_contraction_backtest.py
+
+# 強制重跑 / 測試用限制檔數
+.venv/bin/python3.11 scripts/run_limit_up_contraction_backtest.py --refresh --limit 50
+```
+
+- K 線圖：`output/limit_up_contraction/{股號}.png`
+- 輸出：`data/limit_up_contraction_backtest_summary.json`、`data/limit_up_contraction_backtest_trades.csv`
+- 本階段**不含**獨立前瞻追蹤
+
 ## 低位題材動能選股（選用，預設關閉）
 
-與均線回踩分開掃描；需 `--enable-theme` 才會推播（在 N漲W底假跌破之後）。
+與均線回踩分開掃描；需 `--enable-theme` 才會推播（在漲停量縮整理之後）。
 
 | 條件 | 門檻 |
 |------|------|
@@ -348,6 +386,11 @@ Telegram 摘要會顯示每檔 **產業** 與 **族群**。第二則為 20 交�
 - 文字摘要（前波漲幅、W 底兩腳價位、停利/停損價位、產業族群）
 - 逐檔 K 線圖：`output/w_bottom/{股號}.png`
 - 測試關閉：`--skip-w-bottom`
+
+**漲停量縮整理 — 第五則（每日預設）**
+- 文字摘要（漲停日/漲幅、day1→day4 量縮倍率、整理區間、停損/停利、產業族群）
+- 逐檔 K 線圖：`output/limit_up_contraction/{股號}.png`
+- 測試關閉：`--skip-limit-up`
 
 **低位題材動能（選用，`--enable-theme`）**
 - 文字摘要（熱門產業、市值/籌碼/漲幅）

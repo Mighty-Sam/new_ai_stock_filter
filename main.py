@@ -19,6 +19,7 @@ from src.data.institutional import fetch_institutional_flows
 from src.data.stock_list import get_stock_list
 from src.data.stock_metadata import get_stock_metadata, lookup_metadata
 from src.notify.telegram_client import TelegramClient
+from src.screener.limit_up_contraction import scan_limit_up_contraction
 from src.screener.optimized_filter import filter_optimized
 from src.screener.scanner import scan_market
 from src.screener.sector_summary import format_rotation_block, format_theme_rotation_block
@@ -78,6 +79,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="略過 N漲W底假跌破選股（測試用）",
     )
+    parser.add_argument(
+        "--skip-limit-up",
+        action="store_true",
+        help="略過漲停量縮整理選股（測試用）",
+    )
     return parser.parse_args()
 
 
@@ -91,11 +97,13 @@ def main() -> int:
     theme_output_dir = output_dir / "theme"
     volume_output_dir = output_dir / "volume_surge"
     w_bottom_output_dir = output_dir / "w_bottom"
+    limit_up_output_dir = output_dir / "limit_up_contraction"
     cohort_output_dir = output_dir / "cohort"
     ma_output_dir.mkdir(parents=True, exist_ok=True)
     theme_output_dir.mkdir(parents=True, exist_ok=True)
     volume_output_dir.mkdir(parents=True, exist_ok=True)
     w_bottom_output_dir.mkdir(parents=True, exist_ok=True)
+    limit_up_output_dir.mkdir(parents=True, exist_ok=True)
     cohort_output_dir.mkdir(parents=True, exist_ok=True)
 
     metadata = get_stock_metadata()
@@ -145,11 +153,20 @@ def main() -> int:
             trading_day=scan.is_trading_day,
         )
 
+    limit_up_scan = None
+    if not args.skip_limit_up:
+        limit_up_scan = scan_limit_up_contraction(
+            max_workers=args.workers,
+            stock_limit=args.limit,
+            trading_day=scan.is_trading_day,
+        )
+
     stock_names = get_stock_list()
     chart_paths = {}
     theme_chart_paths = {}
     volume_chart_paths = {}
     w_bottom_chart_paths = {}
+    limit_up_chart_paths = {}
 
     for graded in results:
         result = graded.result
@@ -250,6 +267,31 @@ def main() -> int:
                 wr.stop_loss_price,
             )
 
+    if limit_up_scan is not None:
+        for lr in limit_up_scan.results:
+            name = stock_names.get(lr.stock_code, "")
+            df = limit_up_scan.price_data.get(lr.stock_code)
+            if df is None:
+                continue
+            path = plot_candlestick(
+                df=df,
+                stock_code=lr.stock_code,
+                stock_name=name,
+                signal_date=lr.signal_date,
+                output_path=limit_up_output_dir / f"{lr.stock_code}.png",
+                grade=None,
+                review_notes=lr.review_notes,
+            )
+            limit_up_chart_paths[lr.stock_code] = path
+            logger.info(
+                "漲停量縮整理: %s %s | 漲停 +%.1f%% | 量縮 %.2f× | 停損 %.2f",
+                lr.stock_code,
+                name,
+                lr.day1_gain_pct,
+                lr.contraction_ratio,
+                lr.stop_loss_price,
+            )
+
     scan_date_str = scan.scan_date.strftime("%Y/%m/%d")
 
     tracker = ForwardTracker()
@@ -265,7 +307,10 @@ def main() -> int:
     cohort_codes = [t.stock_code for t in cohort.trades] if cohort.has_trades else []
     volume_codes = [v.stock_code for v in volume_scan.results] if volume_scan else []
     w_bottom_codes = [w.stock_code for w in w_bottom_scan.results] if w_bottom_scan else []
-    chip_codes = sorted(set(push_codes + cohort_codes + volume_codes + w_bottom_codes))
+    limit_up_codes = [l.stock_code for l in limit_up_scan.results] if limit_up_scan else []
+    chip_codes = sorted(
+        set(push_codes + cohort_codes + volume_codes + w_bottom_codes + limit_up_codes)
+    )
     chip_flows = fetch_institutional_flows(chip_codes, end_date=scan.scan_date)
     if chip_flows:
         logger.info("法人籌碼：已取得 %d 檔", len(chip_flows))
@@ -377,6 +422,24 @@ def main() -> int:
                     f"leg1={wr.leg1_low} leg2={wr.leg2_low} "
                     f"tp={wr.take_profit_price} sl={wr.stop_loss_price}"
                 )
+
+        if limit_up_scan is not None:
+            print()
+            logger.info("Dry run 漲停量縮整理：%d 檔", len(limit_up_scan.results))
+            print(
+                client.format_limit_up_summary(
+                    limit_up_scan.results,
+                    stock_names,
+                    scan_date_str,
+                    metadata=metadata,
+                    chip_flows=chip_flows,
+                )
+            )
+            for lr in limit_up_scan.results:
+                print(
+                    f"  {lr.stock_code} close={lr.close} 漲停+{lr.day1_gain_pct}% "
+                    f"量縮={lr.contraction_ratio}× sl={lr.stop_loss_price} tp=+{lr.take_profit_pct}%"
+                )
         return 0
 
     client = TelegramClient()
@@ -427,6 +490,17 @@ def main() -> int:
             chip_flows=chip_flows,
         )
         logger.info("N漲W底假跌破 Telegram 推播完成")
+
+    if limit_up_scan is not None:
+        client.notify_limit_up_results(
+            results=limit_up_scan.results,
+            stock_names=stock_names,
+            chart_paths=limit_up_chart_paths,
+            scan_date=scan_date_str,
+            metadata=metadata,
+            chip_flows=chip_flows,
+        )
+        logger.info("漲停量縮整理 Telegram 推播完成")
 
     if theme_scan is not None:
         client.notify_theme_results(
