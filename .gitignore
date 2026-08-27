@@ -22,6 +22,8 @@ data/w_bottom_backtest_*.json
 data/w_bottom_backtest_*.csv
 data/limit_up_contraction_backtest_*.json
 data/limit_up_contraction_backtest_*.csv
+data/shadow_reversal_backtest_*.json
+data/shadow_reversal_backtest_*.csv
 data/strategy_grid_*.json
 data/strategy_grid_*.csv
 data/v1_vs_v2_baseline.json

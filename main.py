@@ -23,6 +23,7 @@ from src.screener.limit_up_contraction import scan_limit_up_contraction
 from src.screener.optimized_filter import filter_optimized
 from src.screener.scanner import scan_market
 from src.screener.sector_summary import format_rotation_block, format_theme_rotation_block
+from src.screener.shadow_reversal import scan_shadow_reversal
 from src.screener.theme_scanner import scan_theme_momentum
 from src.screener.volume_surge import scan_volume_surge
 from src.screener.w_bottom import scan_w_bottom
@@ -84,6 +85,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="略過漲停量縮整理選股（測試用）",
     )
+    parser.add_argument(
+        "--skip-shadow-reversal",
+        action="store_true",
+        help="略過長下影線反轉選股（測試用）",
+    )
     return parser.parse_args()
 
 
@@ -98,12 +104,14 @@ def main() -> int:
     volume_output_dir = output_dir / "volume_surge"
     w_bottom_output_dir = output_dir / "w_bottom"
     limit_up_output_dir = output_dir / "limit_up_contraction"
+    shadow_reversal_output_dir = output_dir / "shadow_reversal"
     cohort_output_dir = output_dir / "cohort"
     ma_output_dir.mkdir(parents=True, exist_ok=True)
     theme_output_dir.mkdir(parents=True, exist_ok=True)
     volume_output_dir.mkdir(parents=True, exist_ok=True)
     w_bottom_output_dir.mkdir(parents=True, exist_ok=True)
     limit_up_output_dir.mkdir(parents=True, exist_ok=True)
+    shadow_reversal_output_dir.mkdir(parents=True, exist_ok=True)
     cohort_output_dir.mkdir(parents=True, exist_ok=True)
 
     metadata = get_stock_metadata()
@@ -161,12 +169,21 @@ def main() -> int:
             trading_day=scan.is_trading_day,
         )
 
+    shadow_reversal_scan = None
+    if not args.skip_shadow_reversal:
+        shadow_reversal_scan = scan_shadow_reversal(
+            max_workers=args.workers,
+            stock_limit=args.limit,
+            trading_day=scan.is_trading_day,
+        )
+
     stock_names = get_stock_list()
     chart_paths = {}
     theme_chart_paths = {}
     volume_chart_paths = {}
     w_bottom_chart_paths = {}
     limit_up_chart_paths = {}
+    shadow_reversal_chart_paths = {}
 
     for graded in results:
         result = graded.result
@@ -292,6 +309,31 @@ def main() -> int:
                 lr.stop_loss_price,
             )
 
+    if shadow_reversal_scan is not None:
+        for sr in shadow_reversal_scan.results:
+            name = stock_names.get(sr.stock_code, "")
+            df = shadow_reversal_scan.price_data.get(sr.stock_code)
+            if df is None:
+                continue
+            path = plot_candlestick(
+                df=df,
+                stock_code=sr.stock_code,
+                stock_name=name,
+                signal_date=sr.signal_date,
+                output_path=shadow_reversal_output_dir / f"{sr.stock_code}.png",
+                grade=None,
+                review_notes=sr.review_notes,
+            )
+            shadow_reversal_chart_paths[sr.stock_code] = path
+            logger.info(
+                "長下影線反轉: %s %s | 下影線佔比 %.1f%% | 往前22K漲幅 %.1f%% | 停損 %.2f",
+                sr.stock_code,
+                name,
+                sr.lower_shadow_ratio * 100,
+                sr.lookback_gain_pct,
+                sr.stop_loss_price,
+            )
+
     scan_date_str = scan.scan_date.strftime("%Y/%m/%d")
 
     tracker = ForwardTracker()
@@ -308,8 +350,18 @@ def main() -> int:
     volume_codes = [v.stock_code for v in volume_scan.results] if volume_scan else []
     w_bottom_codes = [w.stock_code for w in w_bottom_scan.results] if w_bottom_scan else []
     limit_up_codes = [l.stock_code for l in limit_up_scan.results] if limit_up_scan else []
+    shadow_reversal_codes = (
+        [s.stock_code for s in shadow_reversal_scan.results] if shadow_reversal_scan else []
+    )
     chip_codes = sorted(
-        set(push_codes + cohort_codes + volume_codes + w_bottom_codes + limit_up_codes)
+        set(
+            push_codes
+            + cohort_codes
+            + volume_codes
+            + w_bottom_codes
+            + limit_up_codes
+            + shadow_reversal_codes
+        )
     )
     chip_flows = fetch_institutional_flows(chip_codes, end_date=scan.scan_date)
     if chip_flows:
@@ -440,6 +492,24 @@ def main() -> int:
                     f"  {lr.stock_code} close={lr.close} 漲停+{lr.day1_gain_pct}% "
                     f"量縮={lr.contraction_ratio}× sl={lr.stop_loss_price} tp=+{lr.take_profit_pct}%"
                 )
+
+        if shadow_reversal_scan is not None:
+            print()
+            logger.info("Dry run 長下影線反轉：%d 檔", len(shadow_reversal_scan.results))
+            print(
+                client.format_shadow_reversal_summary(
+                    shadow_reversal_scan.results,
+                    stock_names,
+                    scan_date_str,
+                    metadata=metadata,
+                    chip_flows=chip_flows,
+                )
+            )
+            for sr in shadow_reversal_scan.results:
+                print(
+                    f"  {sr.stock_code} close={sr.close} 下影線={sr.lower_shadow_ratio * 100:.1f}% "
+                    f"往前22K漲幅={sr.lookback_gain_pct}% sl={sr.stop_loss_price} tp=+{sr.take_profit_pct}%"
+                )
         return 0
 
     client = TelegramClient()
@@ -501,6 +571,17 @@ def main() -> int:
             chip_flows=chip_flows,
         )
         logger.info("漲停量縮整理 Telegram 推播完成")
+
+    if shadow_reversal_scan is not None:
+        client.notify_shadow_reversal_results(
+            results=shadow_reversal_scan.results,
+            stock_names=stock_names,
+            chart_paths=shadow_reversal_chart_paths,
+            scan_date=scan_date_str,
+            metadata=metadata,
+            chip_flows=chip_flows,
+        )
+        logger.info("長下影線反轉 Telegram 推播完成")
 
     if theme_scan is not None:
         client.notify_theme_results(

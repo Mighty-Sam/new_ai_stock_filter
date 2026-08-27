@@ -19,6 +19,7 @@ from src.screener.grading import GradedScreenResult
 from src.screener.grading import format_a_source_badge
 from src.screener.sector_summary import format_rotation_block, format_theme_rotation_block
 from src.screener.limit_up_contraction import LimitUpContractionResult
+from src.screener.shadow_reversal import ShadowReversalResult
 from src.screener.theme_conditions import ThemeScreenResult
 from src.screener.volume_surge import VolumeSurgeResult, format_touched_ma_label
 from src.screener.w_bottom import WBottomResult
@@ -635,6 +636,100 @@ class TelegramClient:
                     self._format_industry_caption(r.stock_code, meta),
                     f"量縮 day1 {r.day1_volume:,.0f} → day4 {r.day4_volume:,.0f}"
                     f"（{r.contraction_ratio:.2f}×）",
+                    f"停損：收盤跌破 {r.stop_loss_price:.2f} | 停利：進場 +{r.take_profit_pct:.0f}%",
+                ]
+                flow = chips.get(r.stock_code)
+                if flow is not None:
+                    caption_lines.append(format_chip_line(flow, indent=False))
+                self.send_photo(path, caption="\n".join(caption_lines))
+                time.sleep(batch_delay)
+
+    def _format_shadow_reversal_line(
+        self,
+        result: ShadowReversalResult,
+        index: int,
+        stock_names: Dict[str, str],
+        metadata: Dict[str, StockMetadata],
+        chip_flows: Optional[Dict[str, InstitutionalFlow]] = None,
+    ) -> str:
+        name = stock_names.get(result.stock_code, "")
+        touched = "/".join(m.upper() for m in result.touched_mas)
+        lines = [
+            f"{index}. {result.stock_code} {name}",
+            f"   收盤 {result.close:.2f} | 下影線佔全距 {result.lower_shadow_ratio * 100:.1f}%",
+            self._format_industry_line(result.stock_code, metadata),
+            f"   跌破 {touched} | 往前22K漲幅 {result.lookback_gain_pct:.1f}%"
+            f" | 跌破前5K低點 {result.prior_low:.2f}",
+            f"   停損：收盤跌破 {result.stop_loss_price:.2f} | 停利：進場 +{result.take_profit_pct:.0f}%",
+        ]
+        flow = (chip_flows or {}).get(result.stock_code)
+        if flow is not None:
+            lines.append(format_chip_line(flow))
+        return "\n".join(lines)
+
+    def format_shadow_reversal_summary(
+        self,
+        results: List[ShadowReversalResult],
+        stock_names: Dict[str, str],
+        scan_date: str,
+        metadata: Optional[Dict[str, StockMetadata]] = None,
+        chip_flows: Optional[Dict[str, InstitutionalFlow]] = None,
+    ) -> str:
+        meta = metadata or {}
+        title = "📊 長下影線反轉選股"
+        if not results:
+            return f"{title}\n日期：{scan_date}\n\n今日無符合條件個股。"
+
+        lines = [
+            title,
+            f"日期：{scan_date}",
+            f"符合：{len(results)} 檔",
+            "",
+        ]
+        for i, r in enumerate(results[:15], 1):
+            lines.append(
+                self._format_shadow_reversal_line(r, i, stock_names, meta, chip_flows=chip_flows)
+            )
+        if len(results) > 15:
+            lines.append(f"... 其餘 {len(results) - 15} 檔")
+        return "\n".join(lines)
+
+    def notify_shadow_reversal_results(
+        self,
+        results: List[ShadowReversalResult],
+        stock_names: Dict[str, str],
+        chart_paths: Dict[str, Path],
+        scan_date: str,
+        metadata: Optional[Dict[str, StockMetadata]] = None,
+        chip_flows: Optional[Dict[str, InstitutionalFlow]] = None,
+        batch_delay: float = 1.0,
+    ) -> None:
+        if not self.configured:
+            logger.warning("Telegram 未設定")
+            return
+
+        meta = metadata or {}
+        summary = self.format_shadow_reversal_summary(
+            results,
+            stock_names,
+            scan_date,
+            metadata=meta,
+            chip_flows=chip_flows,
+        )
+        self.send_message(summary)
+        time.sleep(batch_delay)
+
+        chips = chip_flows or {}
+        for r in results:
+            path = chart_paths.get(r.stock_code)
+            if path and path.exists():
+                name = stock_names.get(r.stock_code, r.stock_code)
+                touched = "/".join(m.upper() for m in r.touched_mas)
+                caption_lines = [
+                    f"📊 長下影線反轉 {r.stock_code} {name}",
+                    f"收盤 {r.close:.2f} | 下影線佔全距 {r.lower_shadow_ratio * 100:.1f}%",
+                    self._format_industry_caption(r.stock_code, meta),
+                    f"跌破 {touched} | 往前22K漲幅 {r.lookback_gain_pct:.1f}%",
                     f"停損：收盤跌破 {r.stop_loss_price:.2f} | 停利：進場 +{r.take_profit_pct:.0f}%",
                 ]
                 flow = chips.get(r.stock_code)
