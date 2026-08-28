@@ -18,7 +18,7 @@ from src.screener.strategy_consolidation import gain_ratio_n
 
 logger = logging.getLogger(__name__)
 
-SHADOW_MIN_AVG_VOLUME_30D = 3_000_000  # 3000 張（股數）
+SHADOW_MIN_AVG_VOLUME_30D = 5_000_000  # 5000 張（股數）；全市場回測驗證：3000→5000張 PF由2.15提升至2.28（4000張反而較差，未採用）
 SHADOW_LOWER_SHADOW_MIN_RATIO = 0.6  # 下影線 ≥ 全K棒範圍（high-low）的 60%
 SHADOW_MA_PERIODS = ("ma5", "ma10", "ma20", "ma60", "ma120")
 SHADOW_LOOKBACK_GAIN_BARS = 22

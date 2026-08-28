@@ -28,11 +28,11 @@ def _build_df(
     """基期橫盤 + 一段急拉波段 + 尾根長下影線反轉K棒。"""
     rows = []
     for _ in range(n_base):
-        rows.append({"open": 60.0, "high": 60.3, "low": 59.7, "close": 60.0, "volume": 4_000_000.0})
+        rows.append({"open": 60.0, "high": 60.3, "low": 59.7, "close": 60.0, "volume": 6_000_000.0})
 
     rally_closes = np.linspace(rally_start, rally_end, n_rally)
     for i, c in enumerate(rally_closes):
-        vol = prior_bar_volume if i == n_rally - 1 else 4_000_000.0
+        vol = prior_bar_volume if i == n_rally - 1 else 6_000_000.0
         rows.append({"open": c - 0.5, "high": c + 0.3, "low": c - 0.6, "close": c, "volume": vol})
 
     rows.append(
