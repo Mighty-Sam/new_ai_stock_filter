@@ -173,11 +173,11 @@ def _backtest_single_stock(
         return [], False
 
     df = add_moving_averages(df)
-    institutional_df = prepare_institutional_for_shadow_reversal(
-        stock_code, end_date, lookback_days=days + 30
-    )
-    trades: List[TradeResult] = []
 
+    # 先在不查法人籌碼的情況下走完整段 walk-forward，收集候選訊號日。
+    # 法人籌碼 API 沒有本地快取、且對併發極敏感，只有真的產生候選訊號的股票才值得
+    # 再查一次籌碼資料——多數股票整段回測期間可能一個候選都沒有，可以完全省下這次查詢。
+    candidates: List[pd.Timestamp] = []
     for i in range(MIN_WARMUP, len(df) - MIN_FORWARD):
         as_of = df.index[i]
         if as_of.date() < start_date:
@@ -185,6 +185,23 @@ def _backtest_single_stock(
         if as_of.date() > end_date:
             break
 
+        subset = df.iloc[: i + 1]
+        preliminary = evaluate_shadow_reversal(
+            subset, stock_code=stock_code, benchmark_df=benchmark_df, institutional_df=None
+        )
+        if preliminary is not None:
+            candidates.append(as_of)
+
+    if not candidates:
+        return [], True
+
+    institutional_df = prepare_institutional_for_shadow_reversal(
+        stock_code, end_date, lookback_days=days + 30
+    )
+    trades: List[TradeResult] = []
+
+    for as_of in candidates:
+        i = df.index.get_loc(as_of)
         subset = df.iloc[: i + 1]
         result = evaluate_shadow_reversal(
             subset, stock_code=stock_code, benchmark_df=benchmark_df, institutional_df=institutional_df

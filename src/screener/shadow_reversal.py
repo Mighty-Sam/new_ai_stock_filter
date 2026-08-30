@@ -304,6 +304,16 @@ def _process_shadow_reversal_stock(
         return stock_code, None, None
 
     df = add_moving_averages(df)
+
+    # 先在不查法人籌碼的情況下評估——法人籌碼 API 沒有本地快取、且對併發極敏感，
+    # 只有先通過其他價格/量能條件的少數候選才值得再多打一次籌碼查詢，
+    # 避免對全市場每一檔都查一次（那樣每日排程會變成兩千多次API呼叫）。
+    preliminary = evaluate_shadow_reversal(
+        df, stock_code=stock_code, benchmark_df=benchmark_df, institutional_df=None
+    )
+    if preliminary is None:
+        return stock_code, None, df
+
     institutional_df = prepare_institutional_for_shadow_reversal(
         stock_code, end_date or date.today(), lookback_days=60
     )
