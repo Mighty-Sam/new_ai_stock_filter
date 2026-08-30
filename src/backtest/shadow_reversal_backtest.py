@@ -22,7 +22,7 @@ from src.data.benchmark import fetch_benchmark
 from src.data.price_fetcher import PriceFetcher
 from src.data.stock_list import get_stock_list
 from src.indicators.moving_average import add_moving_averages
-from src.screener.shadow_reversal import evaluate_shadow_reversal
+from src.screener.shadow_reversal import evaluate_shadow_reversal, prepare_institutional_for_shadow_reversal
 
 logger = logging.getLogger(__name__)
 
@@ -173,6 +173,9 @@ def _backtest_single_stock(
         return [], False
 
     df = add_moving_averages(df)
+    institutional_df = prepare_institutional_for_shadow_reversal(
+        stock_code, end_date, lookback_days=days + 30
+    )
     trades: List[TradeResult] = []
 
     for i in range(MIN_WARMUP, len(df) - MIN_FORWARD):
@@ -183,7 +186,9 @@ def _backtest_single_stock(
             break
 
         subset = df.iloc[: i + 1]
-        result = evaluate_shadow_reversal(subset, stock_code=stock_code, benchmark_df=benchmark_df)
+        result = evaluate_shadow_reversal(
+            subset, stock_code=stock_code, benchmark_df=benchmark_df, institutional_df=institutional_df
+        )
         if result is None:
             continue
 

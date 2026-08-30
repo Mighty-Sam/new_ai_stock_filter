@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import logging
 import os
+import threading
+import time
 from dataclasses import dataclass
 from datetime import date, timedelta
 from typing import Dict, List, Optional
@@ -19,6 +21,23 @@ FETCH_CALENDAR_DAYS = 30
 LOOKBACK_TRADING_DAYS = 10
 SUMMARY_DAYS = 5
 SHARES_PER_LOT = 1000
+
+# 法人籌碼 API 對併發特別敏感（曾在全市場回測中觸發 FinMind IP 封鎖），
+# 用全域節流鎖把「不論幾條執行緒同時呼叫」都限制在此最小間隔以上，
+# 而不是只在單一呼叫端加 sleep（那樣多執行緒仍會同時打出去）。
+_RATE_LIMIT_LOCK = threading.Lock()
+_RATE_LIMIT_MIN_INTERVAL = 2.5  # 秒；1.2秒在全市場（2000+檔）連續跑30分鐘以上仍會被封鎖，這代表限制是「一段時間內的總量」而非單純瞬時速率
+_last_request_at = 0.0
+
+
+def _throttle() -> None:
+    global _last_request_at
+    with _RATE_LIMIT_LOCK:
+        now = time.monotonic()
+        wait = _RATE_LIMIT_MIN_INTERVAL - (now - _last_request_at)
+        if wait > 0:
+            time.sleep(wait)
+        _last_request_at = time.monotonic()
 
 
 @dataclass(frozen=True)
@@ -112,26 +131,26 @@ def compute_institutional_flow(df: pd.DataFrame, stock_code: str) -> Optional[In
     )
 
 
-def fetch_institutional_wide(
+def _fetch_institutional_wide_raw(
     stock_code: str,
-    end_date: Optional[date] = None,
+    start_date: date,
+    end_date: date,
 ) -> Optional[pd.DataFrame]:
-    """抓取單檔法人買賣 Wide 表。"""
+    """抓取單檔法人買賣 Wide 表（任意區間，供快照/長區間共用）。"""
     token = os.getenv("FINMIND_TOKEN", "").strip()
     if not token:
         logger.debug("FINMIND_TOKEN 未設定，略過法人籌碼")
         return None
 
-    end = end_date or date.today()
-    start = end - timedelta(days=FETCH_CALENDAR_DAYS)
     params = {
         "dataset": "TaiwanStockInstitutionalInvestorsBuySellWide",
         "data_id": stock_code,
-        "start_date": start.isoformat(),
-        "end_date": end.isoformat(),
+        "start_date": start_date.isoformat(),
+        "end_date": end_date.isoformat(),
     }
 
     try:
+        _throttle()
         response = requests.get(
             FINMIND_API_URL,
             params=params,
@@ -145,11 +164,31 @@ def fetch_institutional_wide(
             return None
         rows = payload.get("data") or []
         if not rows:
+            logger.debug("法人籌碼 %s 查無資料（%s ~ %s）", stock_code, start_date, end_date)
             return None
         return pd.DataFrame(rows)
     except Exception as exc:
         logger.warning("法人籌碼 %s 抓取失敗: %s", stock_code, exc)
         return None
+
+
+def fetch_institutional_wide(
+    stock_code: str,
+    end_date: Optional[date] = None,
+) -> Optional[pd.DataFrame]:
+    """抓取單檔法人買賣 Wide 表（近 FETCH_CALENDAR_DAYS 天快照，供每日推播用）。"""
+    end = end_date or date.today()
+    start = end - timedelta(days=FETCH_CALENDAR_DAYS)
+    return _fetch_institutional_wide_raw(stock_code, start, end)
+
+
+def fetch_institutional_wide_range(
+    stock_code: str,
+    start_date: date,
+    end_date: date,
+) -> Optional[pd.DataFrame]:
+    """抓取單檔法人買賣 Wide 表（任意起訖區間，供回測/長期連買判斷一次性抓取用）。"""
+    return _fetch_institutional_wide_raw(stock_code, start_date, end_date)
 
 
 def get_institutional_flow(

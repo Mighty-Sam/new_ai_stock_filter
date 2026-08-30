@@ -7,10 +7,27 @@ import pandas as pd
 
 from src.indicators.moving_average import add_moving_averages
 from src.screener.shadow_reversal import (
+    SHADOW_INSTITUTIONAL_MIN_STREAK,
     SHADOW_LOOKBACK_MIN_GAIN_PCT,
     SHADOW_LOWER_SHADOW_MIN_RATIO,
     evaluate_shadow_reversal,
 )
+
+
+def _build_institutional_df(signal_date, streak_days, total_days=6):
+    """建立 FinMind Wide 表格式的最小法人籌碼假資料，最後 streak_days 天為買超，其餘為賣超。"""
+    dates = pd.bdate_range(end=signal_date, periods=total_days)
+    rows = []
+    for i, d in enumerate(dates):
+        is_buy_day = i >= total_days - streak_days
+        trust_buy = 1000 if is_buy_day else 0
+        trust_sell = 0 if is_buy_day else 1000
+        rows.append({
+            "date": d.strftime("%Y-%m-%d"),
+            "Investment_Trust_buy": trust_buy,
+            "Investment_Trust_sell": trust_sell,
+        })
+    return pd.DataFrame(rows)
 
 
 def _build_df(
@@ -125,19 +142,45 @@ def test_benchmark_regime_filter():
     df = _build_df()
     signal_date = df.index[-1]
 
-    bench_down = pd.DataFrame({"close": [100.0], "ma20": [110.0]}, index=[signal_date])
+    bench_down = pd.DataFrame({"close": [100.0], "ma20": [110.0], "ma60": [105.0]}, index=[signal_date])
     result_down = evaluate_shadow_reversal(df, stock_code="9999", benchmark_df=bench_down)
     assert result_down is None
 
-    bench_up = pd.DataFrame({"close": [120.0], "ma20": [110.0]}, index=[signal_date])
+    bench_up = pd.DataFrame({"close": [120.0], "ma20": [110.0], "ma60": [100.0]}, index=[signal_date])
     result_up = evaluate_shadow_reversal(df, stock_code="9999", benchmark_df=bench_up)
     assert result_up is not None
     assert result_up.market_trend_ok is True
+
+    # 收盤守住MA20，但MA20還沒站上MA60（雙重確認失敗），仍應擋下
+    bench_ma20_below_ma60 = pd.DataFrame(
+        {"close": [120.0], "ma20": [110.0], "ma60": [115.0]}, index=[signal_date]
+    )
+    result_partial = evaluate_shadow_reversal(df, stock_code="9999", benchmark_df=bench_ma20_below_ma60)
+    assert result_partial is None
 
     # 未提供大盤資料時，視為「不檢查」，不應阻擋原本會通過的訊號
     result_no_benchmark = evaluate_shadow_reversal(df, stock_code="9999", benchmark_df=None)
     assert result_no_benchmark is not None
     assert result_no_benchmark.market_trend_ok is None
+
+
+def test_institutional_streak_filter():
+    df = _build_df()
+    signal_date = df.index[-1]
+
+    inst_short_streak = _build_institutional_df(signal_date, streak_days=SHADOW_INSTITUTIONAL_MIN_STREAK - 1)
+    result_short = evaluate_shadow_reversal(df, stock_code="9999", institutional_df=inst_short_streak)
+    assert result_short is None
+
+    inst_enough_streak = _build_institutional_df(signal_date, streak_days=SHADOW_INSTITUTIONAL_MIN_STREAK)
+    result_ok = evaluate_shadow_reversal(df, stock_code="9999", institutional_df=inst_enough_streak)
+    assert result_ok is not None
+    assert result_ok.institutional_streak == SHADOW_INSTITUTIONAL_MIN_STREAK
+
+    # 未提供籌碼資料時，視為「不檢查」，不應阻擋原本會通過的訊號
+    result_none = evaluate_shadow_reversal(df, stock_code="9999", institutional_df=None)
+    assert result_none is not None
+    assert result_none.institutional_streak is None
 
 
 def test_random_walk_no_signal():

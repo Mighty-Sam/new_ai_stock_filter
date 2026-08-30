@@ -11,6 +11,7 @@ from typing import Dict, List, Optional, Tuple
 import pandas as pd
 
 from src.data.benchmark import fetch_benchmark
+from src.data.institutional import _row_net_lots, fetch_institutional_wide_range
 from src.data.price_fetcher import PriceFetcher
 from src.indicators.moving_average import add_moving_averages
 from src.screener.scan_runner import ScanRun, run_market_scan
@@ -18,12 +19,14 @@ from src.screener.strategy_consolidation import gain_ratio_n
 
 logger = logging.getLogger(__name__)
 
-SHADOW_MIN_AVG_VOLUME_30D = 5_000_000  # 5000 張（股數）；全市場回測驗證：3000→5000張 PF由2.15提升至2.28（4000張反而較差，未採用）
+SHADOW_MIN_AVG_VOLUME_30D = 3_000_000  # 3000 張（股數）；疊加法人連買條件後，3000張的候選池比5000張更划算
 SHADOW_LOWER_SHADOW_MIN_RATIO = 0.6  # 下影線 ≥ 全K棒範圍（high-low）的 60%
 SHADOW_MA_PERIODS = ("ma5", "ma10", "ma20", "ma60", "ma120")
 SHADOW_LOOKBACK_GAIN_BARS = 22
 SHADOW_LOOKBACK_MIN_GAIN_PCT = 30.0  # 全市場回測驗證：25%→30% PF由1.92提升至2.15；35%/40%無進一步邊際效益
 SHADOW_PRIOR_LOW_LOOKBACK = 5
+SHADOW_INSTITUTIONAL_STREAK_LOOKBACK = 10  # 連買天數計算的回看交易日數
+SHADOW_INSTITUTIONAL_MIN_STREAK = 2  # 全市場回測驗證：三大法人合計連買≥2日，PF由2.15提升至3.91
 TAKE_PROFIT_PCT = 20.0  # 停利：進場價 +20%
 MAX_HOLD_DAYS = 20
 
@@ -47,6 +50,7 @@ class ShadowReversalResult:
     take_profit_pct: float  # = TAKE_PROFIT_PCT，供回測停利使用
     volume_increased: bool  # 當根量 > 前一根量（選用參考，非篩選門檻）
     market_trend_ok: Optional[bool] = None  # 訊號當日 0050 收盤 > 自身MA20；未提供大盤資料時為 None（不檢查）
+    institutional_streak: Optional[int] = None  # 訊號當日往前算，三大法人合計連續買超天數；未提供籌碼資料時為 None（不檢查）
     review_notes: List[str] = field(default_factory=list)
 
 
@@ -109,7 +113,11 @@ def _has_gap_down_in_window(
 
 
 def _benchmark_trend_ok(benchmark_df: pd.DataFrame, as_of: pd.Timestamp) -> Optional[bool]:
-    """訊號當日（或之前最近一個交易日）0050 收盤是否 > 自身 MA20。無資料時回傳 None。"""
+    """訊號當日（或之前最近一個交易日）0050 收盤是否 > 自身MA20，且MA20 > MA60（雙重確認）。
+    全市場回測驗證：這條件在多頭期間表現與單純「收盤>MA20」完全相同（PF 2.35，MA20多頭期間幾乎
+    全程都在MA60之上，不會多濾掉東西），但在2023震盪年能把PF從1.03拉到1.20——多頭不變差、
+    震盪年變好，是低風險的升級。2022真正熊市無論哪種規則都救不了，不在此濾網的設計目標內。
+    無資料時回傳 None（不檢查）。"""
     if benchmark_df is None or benchmark_df.empty or "ma20" not in benchmark_df.columns:
         return None
     eligible = benchmark_df[benchmark_df.index <= as_of]
@@ -117,24 +125,64 @@ def _benchmark_trend_ok(benchmark_df: pd.DataFrame, as_of: pd.Timestamp) -> Opti
         return None
     row = eligible.iloc[-1]
     ma20 = row.get("ma20")
+    ma60 = row.get("ma60")
     close = row.get("close")
-    if ma20 is None or close is None or pd.isna(ma20) or pd.isna(close):
+    if any(v is None or pd.isna(v) for v in (ma20, ma60, close)):
         return None
-    return bool(float(close) > float(ma20))
+    return bool(float(close) > float(ma20) and float(ma20) > float(ma60))
 
 
 def prepare_benchmark_for_shadow_reversal(days: int = 1200) -> pd.DataFrame:
-    """取得 0050 並補上 MA20，供 evaluate_shadow_reversal 的大盤濾網使用。"""
+    """取得 0050 並補上 MA20/MA60，供 evaluate_shadow_reversal 的大盤濾網使用。"""
     benchmark_df = fetch_benchmark(days=days)
     benchmark_df = benchmark_df.copy()
     benchmark_df["ma20"] = benchmark_df["close"].rolling(window=20, min_periods=20).mean()
+    benchmark_df["ma60"] = benchmark_df["close"].rolling(window=60, min_periods=60).mean()
     return benchmark_df
+
+
+def _institutional_streak(
+    institutional_df: Optional[pd.DataFrame],
+    as_of: pd.Timestamp,
+    lookback: int = SHADOW_INSTITUTIONAL_STREAK_LOOKBACK,
+) -> Optional[int]:
+    """訊號當日（或之前最近一個交易日）往前算，三大法人合計連續買超天數。無資料時回傳 None。"""
+    if institutional_df is None or institutional_df.empty:
+        return None
+
+    work = institutional_df.copy()
+    work["date"] = pd.to_datetime(work["date"])
+    work = work[work["date"] <= as_of].sort_values("date").tail(lookback)
+    if work.empty:
+        return None
+
+    totals = [_row_net_lots(row)[3] for _, row in work.iterrows()]
+    streak = 0
+    for value in reversed(totals):
+        if value > 0:
+            streak += 1
+        else:
+            break
+    return streak
+
+
+def prepare_institutional_for_shadow_reversal(
+    stock_code: str,
+    end_date: date,
+    lookback_days: int = 400,
+) -> Optional[pd.DataFrame]:
+    """抓取單檔法人買賣資料，供 evaluate_shadow_reversal 的連買濾網使用（一次抓完整區間，避免逐日重複呼叫）。"""
+    from datetime import timedelta
+
+    start = end_date - timedelta(days=lookback_days)
+    return fetch_institutional_wide_range(stock_code, start_date=start, end_date=end_date)
 
 
 def evaluate_shadow_reversal(
     df: pd.DataFrame,
     stock_code: str = "",
     benchmark_df: Optional[pd.DataFrame] = None,
+    institutional_df: Optional[pd.DataFrame] = None,
 ) -> Optional[ShadowReversalResult]:
     if len(df) < _MIN_BARS_NEEDED:
         return None
@@ -189,6 +237,11 @@ def evaluate_shadow_reversal(
     if market_trend_ok is False:
         return None
 
+    # 條件11（法人籌碼濾網，選用）：三大法人合計連買天數須達門檻
+    institutional_streak = _institutional_streak(institutional_df, df.index[signal_idx])
+    if institutional_streak is not None and institutional_streak < SHADOW_INSTITUTIONAL_MIN_STREAK:
+        return None
+
     # 條件6（選用，僅供人工複核參考，非篩選門檻）：當根量能是否大於前一根
     prev_volume = float(df.iloc[signal_idx - 1]["volume"]) if signal_idx >= 1 else None
     volume_increased = prev_volume is not None and volume > prev_volume
@@ -205,11 +258,16 @@ def evaluate_shadow_reversal(
         f"往前{SHADOW_LOOKBACK_GAIN_BARS}根K棒內無向下跳空缺口",
         "✅ 量能較前一根放大" if volume_increased else "ℹ️ 量能未較前一根放大（非必要條件）",
         (
-            "✅ 0050 站上自身MA20"
+            "✅ 0050 站上自身MA20且MA20>MA60（雙重確認）"
             if market_trend_ok
             else "ℹ️ 未提供大盤資料，未檢查大盤趨勢"
             if market_trend_ok is None
-            else "⚠️ 0050 未站上自身MA20"
+            else "⚠️ 0050 未同時滿足站上MA20且MA20>MA60"
+        ),
+        (
+            f"✅ 三大法人合計連買 {institutional_streak} 日"
+            if institutional_streak is not None
+            else "ℹ️ 未提供法人籌碼資料，未檢查連買天數"
         ),
         f"停損：收盤跌破 {stop_loss_price:.2f}（下影線低點）| 停利：進場 +{TAKE_PROFIT_PCT:.0f}%",
     ]
@@ -230,6 +288,7 @@ def evaluate_shadow_reversal(
         take_profit_pct=TAKE_PROFIT_PCT,
         volume_increased=volume_increased,
         market_trend_ok=market_trend_ok,
+        institutional_streak=institutional_streak,
         review_notes=notes,
     )
 
@@ -245,7 +304,12 @@ def _process_shadow_reversal_stock(
         return stock_code, None, None
 
     df = add_moving_averages(df)
-    result = evaluate_shadow_reversal(df, stock_code=stock_code, benchmark_df=benchmark_df)
+    institutional_df = prepare_institutional_for_shadow_reversal(
+        stock_code, end_date or date.today(), lookback_days=60
+    )
+    result = evaluate_shadow_reversal(
+        df, stock_code=stock_code, benchmark_df=benchmark_df, institutional_df=institutional_df
+    )
     if result is None:
         return stock_code, None, df
     return stock_code, result, df
