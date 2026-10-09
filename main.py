@@ -24,6 +24,7 @@ from src.screener.optimized_filter import filter_optimized
 from src.screener.scanner import scan_market
 from src.screener.sector_summary import format_rotation_block, format_theme_rotation_block
 from src.screener.shadow_reversal import scan_shadow_reversal
+from src.screener.strong_pullback_recovery import scan_strong_pullback_recovery
 from src.screener.theme_scanner import scan_theme_momentum
 from src.screener.volume_surge import scan_volume_surge
 from src.screener.w_bottom import scan_w_bottom
@@ -90,6 +91,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="略過長下影線反轉選股（測試用）",
     )
+    parser.add_argument(
+        "--skip-spr",
+        action="store_true",
+        help="略過強勢股長黑收復均線選股（測試用）",
+    )
     return parser.parse_args()
 
 
@@ -105,6 +111,7 @@ def main() -> int:
     w_bottom_output_dir = output_dir / "w_bottom"
     limit_up_output_dir = output_dir / "limit_up_contraction"
     shadow_reversal_output_dir = output_dir / "shadow_reversal"
+    spr_output_dir = output_dir / "strong_pullback_recovery"
     cohort_output_dir = output_dir / "cohort"
     ma_output_dir.mkdir(parents=True, exist_ok=True)
     theme_output_dir.mkdir(parents=True, exist_ok=True)
@@ -112,6 +119,7 @@ def main() -> int:
     w_bottom_output_dir.mkdir(parents=True, exist_ok=True)
     limit_up_output_dir.mkdir(parents=True, exist_ok=True)
     shadow_reversal_output_dir.mkdir(parents=True, exist_ok=True)
+    spr_output_dir.mkdir(parents=True, exist_ok=True)
     cohort_output_dir.mkdir(parents=True, exist_ok=True)
 
     metadata = get_stock_metadata()
@@ -177,6 +185,14 @@ def main() -> int:
             trading_day=scan.is_trading_day,
         )
 
+    spr_scan = None
+    if not args.skip_spr:
+        spr_scan = scan_strong_pullback_recovery(
+            max_workers=args.workers,
+            stock_limit=args.limit,
+            trading_day=scan.is_trading_day,
+        )
+
     stock_names = get_stock_list()
     chart_paths = {}
     theme_chart_paths = {}
@@ -184,6 +200,7 @@ def main() -> int:
     w_bottom_chart_paths = {}
     limit_up_chart_paths = {}
     shadow_reversal_chart_paths = {}
+    spr_chart_paths = {}
 
     for graded in results:
         result = graded.result
@@ -334,6 +351,35 @@ def main() -> int:
                 sr.stop_loss_price,
             )
 
+    if spr_scan is not None:
+        for sp in spr_scan.signals:
+            if not sp.main_list:
+                continue
+            name = stock_names.get(sp.stock_code, "")
+            df = spr_scan.price_data.get(sp.stock_code)
+            if df is None:
+                continue
+            path = plot_candlestick(
+                df=df,
+                stock_code=sp.stock_code,
+                stock_name=name,
+                signal_date=sp.signal_date,
+                output_path=spr_output_dir / f"{sp.stock_code}.png",
+                grade=sp.grade,
+                review_notes=sp.review_notes,
+            )
+            spr_chart_paths[sp.stock_code] = path
+            logger.info(
+                "長黑收復均線: %s %s | %s %.0f 分 | T0 %s 量比 %.2f | %d 日收復",
+                sp.stock_code,
+                name,
+                sp.grade,
+                sp.score,
+                sp.t0_date.date(),
+                sp.volume_ratio,
+                sp.recovery_days,
+            )
+
     scan_date_str = scan.scan_date.strftime("%Y/%m/%d")
 
     tracker = ForwardTracker()
@@ -353,6 +399,7 @@ def main() -> int:
     shadow_reversal_codes = (
         [s.stock_code for s in shadow_reversal_scan.results] if shadow_reversal_scan else []
     )
+    spr_codes = [s.stock_code for s in spr_scan.signals if s.main_list] if spr_scan else []
     chip_codes = sorted(
         set(
             push_codes
@@ -361,6 +408,7 @@ def main() -> int:
             + w_bottom_codes
             + limit_up_codes
             + shadow_reversal_codes
+            + spr_codes
         )
     )
     chip_flows = fetch_institutional_flows(chip_codes, end_date=scan.scan_date)
@@ -510,6 +558,26 @@ def main() -> int:
                     f"  {sr.stock_code} close={sr.close} 下影線={sr.lower_shadow_ratio * 100:.1f}% "
                     f"往前22K漲幅={sr.lookback_gain_pct}% sl={sr.stop_loss_price} tp=+{sr.take_profit_pct}%"
                 )
+
+        if spr_scan is not None:
+            print()
+            logger.info(
+                "Dry run 長黑收復均線：signal %d / watch %d / follow-up %d",
+                len(spr_scan.signals),
+                len(spr_scan.watch),
+                len(spr_scan.follow_up),
+            )
+            print(
+                client.format_spr_summary(
+                    spr_scan.signals,
+                    spr_scan.watch,
+                    spr_scan.follow_up,
+                    stock_names,
+                    scan_date_str,
+                    metadata=metadata,
+                    chip_flows=chip_flows,
+                )
+            )
         return 0
 
     client = TelegramClient()
@@ -582,6 +650,19 @@ def main() -> int:
             chip_flows=chip_flows,
         )
         logger.info("長下影線反轉 Telegram 推播完成")
+
+    if spr_scan is not None:
+        client.notify_spr_results(
+            signals=spr_scan.signals,
+            watch=spr_scan.watch,
+            follow_up=spr_scan.follow_up,
+            stock_names=stock_names,
+            chart_paths=spr_chart_paths,
+            scan_date=scan_date_str,
+            metadata=metadata,
+            chip_flows=chip_flows,
+        )
+        logger.info("長黑收復均線 Telegram 推播完成")
 
     if theme_scan is not None:
         client.notify_theme_results(

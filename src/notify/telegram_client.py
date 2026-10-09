@@ -20,6 +20,7 @@ from src.screener.grading import format_a_source_badge
 from src.screener.sector_summary import format_rotation_block, format_theme_rotation_block
 from src.screener.limit_up_contraction import LimitUpContractionResult
 from src.screener.shadow_reversal import ShadowReversalResult
+from src.screener.strong_pullback_recovery import SPR_NOTE, SPRResult, format_risk_flags
 from src.screener.theme_conditions import ThemeScreenResult
 from src.screener.volume_surge import VolumeSurgeResult, format_touched_ma_label
 from src.screener.w_bottom import WBottomResult
@@ -731,6 +732,112 @@ class TelegramClient:
                     self._format_industry_caption(r.stock_code, meta),
                     f"跌破 {touched} | 往前22K漲幅 {r.lookback_gain_pct:.1f}%",
                     f"停損：收盤跌破 {r.stop_loss_price:.2f} | 停利：進場 +{r.take_profit_pct:.0f}%",
+                ]
+                flow = chips.get(r.stock_code)
+                if flow is not None:
+                    caption_lines.append(format_chip_line(flow, indent=False))
+                self.send_photo(path, caption="\n".join(caption_lines))
+                time.sleep(batch_delay)
+
+    def _format_spr_signal_line(
+        self,
+        result: SPRResult,
+        index: int,
+        stock_names: Dict[str, str],
+        metadata: Dict[str, StockMetadata],
+        chip_flows: Optional[Dict[str, InstitutionalFlow]] = None,
+    ) -> str:
+        name = stock_names.get(result.stock_code, "")
+        lines = [
+            f"{index}. {result.stock_code} {name} {result.grade} {result.score:.0f}分",
+            f"   T0 {result.t0_date:%m/%d} 量比 {result.volume_ratio:.2f}（{result.volume_tag}）"
+            f"| {result.recovery_days}日收復 | 收盤 {result.close:.2f}",
+            self._format_industry_line(result.stock_code, metadata),
+            f"   回踩參考 MA5 {result.ma5:.2f}／MA10 {result.ma10:.2f} | T0 低 {result.t0_low:.2f}",
+        ]
+        if result.risk_flags:
+            lines.append(f"   風險：{format_risk_flags(result.risk_flags)}")
+        flow = (chip_flows or {}).get(result.stock_code)
+        if flow is not None:
+            lines.append(format_chip_line(flow))
+        return "\n".join(lines)
+
+    def format_spr_summary(
+        self,
+        signals: List[SPRResult],
+        watch: List[SPRResult],
+        follow_up: List[SPRResult],
+        stock_names: Dict[str, str],
+        scan_date: str,
+        metadata: Optional[Dict[str, StockMetadata]] = None,
+        chip_flows: Optional[Dict[str, InstitutionalFlow]] = None,
+        max_signals: int = 10,
+        max_watch: int = 5,
+    ) -> str:
+        meta = metadata or {}
+        title = "📊 強勢股長黑收復均線"
+        main_signals = [r for r in signals if r.main_list]
+        main_watch = [r for r in watch if r.main_list]
+        weakening = [r for r in follow_up if r.held_ma20 is False or r.held_t0_low is False]
+        lines = [title, f"日期：{scan_date}", f"⚠️ {SPR_NOTE}", ""]
+        if not main_signals and not main_watch and not weakening:
+            lines.append("今日無符合條件個股。")
+            return "\n".join(lines)
+        lines.append(f"Signal：今日收盤站回 MA5/10/20，明日開盤起可交易（{len(main_signals)} 檔）")
+        for i, r in enumerate(main_signals[:max_signals], 1):
+            lines.append(self._format_spr_signal_line(r, i, stock_names, meta, chip_flows=chip_flows))
+        if len(main_signals) > max_signals:
+            lines.append(f"... 其餘 {len(main_signals) - max_signals} 檔")
+        if main_watch:
+            lines += ["", f"T0 觀察：今日長黑跌破三線，待 1～3 日收復（{len(main_watch)} 檔）"]
+            for r in main_watch[:max_watch]:
+                name = stock_names.get(r.stock_code, "")
+                lines.append(
+                    f"• {r.stock_code} {name} {r.score:.0f}/80 | 量比 {r.volume_ratio:.2f}（{r.volume_tag}）| 收盤 {r.t0_close:.2f}"
+                )
+        if weakening:
+            lines += ["", "近期訊號轉弱："]
+            for r in weakening:
+                name = stock_names.get(r.stock_code, "")
+                bad = [f for f in r.risk_flags if f.endswith("_after")]
+                lines.append(f"• {r.stock_code} {name}（{r.bar_date:%m/%d} 訊號）{format_risk_flags(bad)}")
+        lines += ["", "事件風險（新聞、處置、全額交割）未檢查"]
+        return "\n".join(lines)
+
+    def notify_spr_results(
+        self,
+        signals: List[SPRResult],
+        watch: List[SPRResult],
+        follow_up: List[SPRResult],
+        stock_names: Dict[str, str],
+        chart_paths: Dict[str, Path],
+        scan_date: str,
+        metadata: Optional[Dict[str, StockMetadata]] = None,
+        chip_flows: Optional[Dict[str, InstitutionalFlow]] = None,
+        batch_delay: float = 1.0,
+    ) -> None:
+        if not self.configured:
+            logger.warning("Telegram 未設定")
+            return
+
+        meta = metadata or {}
+        summary = self.format_spr_summary(
+            signals, watch, follow_up, stock_names, scan_date, metadata=meta, chip_flows=chip_flows
+        )
+        self.send_message(summary)
+        time.sleep(batch_delay)
+
+        chips = chip_flows or {}
+        for r in [x for x in signals if x.main_list]:
+            path = chart_paths.get(r.stock_code)
+            if path and path.exists():
+                name = stock_names.get(r.stock_code, r.stock_code)
+                caption_lines = [
+                    f"📊 長黑收復均線 {r.stock_code} {name} {r.grade} {r.score:.0f}分",
+                    f"T0 {r.t0_date:%m/%d} 長黑 實體 {r.body_multiple:.2f} 倍 | 量比 {r.volume_ratio:.2f}（{r.volume_tag}）",
+                    self._format_industry_caption(r.stock_code, meta),
+                    f"{r.recovery_days} 日收復 | 收盤 {r.close:.2f}",
+                    f"回踩參考 MA5 {r.ma5:.2f}／MA10 {r.ma10:.2f} | T0 低 {r.t0_low:.2f}",
                 ]
                 flow = chips.get(r.stock_code)
                 if flow is not None:
